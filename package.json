@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "use react build mobile web",
   "main": "dist/index.js",
-  "files": [
-    "dist",
-    "src"
-  ],
   "scripts": {
     "build": "webpack --config webpack.config.js --sort-assets-by --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,5 +28,9 @@
     "babel-preset-stage-2": "^6.24.1",
     "caniuse-api": "^2.0.0",
     "webpack": "^3.5.2"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
