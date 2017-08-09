@@ -37,8 +37,8 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'ReactNative.js',
-    library: 'ReactNative',
+    filename: 'index.js',
+    library: 'index',
     libraryTarget: 'umd',
     path: DIST_DIRECTORY
   },
