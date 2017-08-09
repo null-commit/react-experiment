@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "use react build mobile web",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "webpack --config webpack.config.js --sort-assets-by --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
