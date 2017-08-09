@@ -13,6 +13,13 @@
   "keywords": [
     "react-mobile-components"
   ],
+  "peerDependencies": {
+    "react": "15.4.x || 15.5.x || 15.6.x",
+    "react-dom": "15.4.x || 15.5.x || 15.6.x"
+  },
   "author": "kogm",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "caniuse-api": "^2.0.0"
+  }
 }
