@@ -2076,18 +2076,13 @@ module.exports = ReactPropTypesSecret;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.TestComponent = undefined;
-
 var _TestComponent = __webpack_require__(19);
 
 var _TestComponent2 = _interopRequireDefault(_TestComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.TestComponent = _TestComponent2.default;
+module.exports = _TestComponent2.default;
 
 /***/ }),
 /* 19 */
