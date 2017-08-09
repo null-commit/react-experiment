@@ -1,3 +1,8 @@
 import TestComponent from './TestComponent.js';
 
-module.exports = TestComponent;
+
+const ReactCompnent = {
+    TestComponent
+}
+
+module.exports = ReactCompnent;
