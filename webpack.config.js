@@ -7,21 +7,28 @@ module.exports = {
   entry: SRC_DIRECTORY,
   output: {
     path: __dirname+"/dist",
-    filename: "bundle.js"
+    filename: "index.js"
   },
+  externals: [
+    {
+      react: {
+        root: 'React',
+        commonjs2: 'react',
+        commonjs: 'react',
+        amd: 'react'
+      }
+    }
+  ],
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'babel-loader',
+        test: /\.js$/,
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
+        use: {
+          loader: 'babel-loader',
+          options: { cacheDirectory: true }
         }
       }
     ]
   },
-  resolve: {
-    extensions: ['','.coffee','.js']
-  }
 }
