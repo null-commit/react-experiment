@@ -4,7 +4,7 @@
   "description": "use react build mobile web",
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js --sort-assets-by --progress",
+    "build": "rm -rf ./dist && webpack --config webpack.config.js --sort-assets-by --progress",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
