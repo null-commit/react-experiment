@@ -2,12 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 
 const SRC_DIRECTORY = path.resolve(__dirname, 'src');
+const DIST_DIRECTORY = path.resolve(__dirname, 'dist');
 
 module.exports = {
   entry: SRC_DIRECTORY,
   output: {
-    path: __dirname+"/dist",
-    filename: "index.js"
+    path: DIST_DIRECTORY,
+    filename: "index.js",
+    libraryTarget: 'umd',
   },
   externals: [
     {
@@ -27,6 +29,13 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: { cacheDirectory: true }
+        }
+      },
+      {
+        test: /\.(gif|jpe?g|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { name: '[name].[ext]' }
         }
       }
     ]
