@@ -13,7 +13,8 @@
   "files": [
     "dist",
     "src",
-    "!**/__tests__"
+    "!**/__tests__",
+    "!storybook"
   ],
   "peerDependencies": {
     "react": "15.4.x || 15.5.x || 15.6.x",
@@ -32,6 +33,8 @@
     "enzyme": "^2.9.1",
     "enzyme-to-json": "^1.5.1",
     "flow-bin": "^0.52.0",
+    "jest": "^20.0.4",
+    "react-test-renderer": "^15.6.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.2",
     "webpack-bundle-analyzer": "^2.9.0"
@@ -43,8 +46,11 @@
   "scripts": {
     "build": "del ./dist && webpack --config webpack.config.js --sort-assets-by --progress ",
     "compile": "del ./dist && mkdir dist && babel src -d dist --ignore **/__tests__",
+    "jest": "jest",
+    "jest:watch": "yarn test -- --watch",
     "flow": "flow",
-    "test": "flow && jest"
+    "test": "flow && jest",
+    "start": "start-storybook -p 9001 -c ./storybook/.storybook"
   },
   "jest": {
     "testEnvironment": "jsdom",
