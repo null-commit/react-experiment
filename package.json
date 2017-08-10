@@ -14,7 +14,8 @@
     "dist",
     "src",
     "!**/__tests__",
-    "!storybook"
+    "!.storybook",
+    "!stories"
   ],
   "peerDependencies": {
     "react": "15.4.x || 15.5.x || 15.6.x",
@@ -37,7 +38,8 @@
     "react-test-renderer": "^15.6.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.2",
-    "webpack-bundle-analyzer": "^2.9.0"
+    "webpack-bundle-analyzer": "^2.9.0",
+    "@storybook/react": "^3.2.3"
   },
   "dependencies": {
     "react": "^15.6.1",
@@ -50,7 +52,8 @@
     "jest:watch": "yarn test -- --watch",
     "flow": "flow",
     "test": "flow && jest",
-    "start": "start-storybook -p 9001 -c ./storybook/.storybook"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "testEnvironment": "jsdom",
