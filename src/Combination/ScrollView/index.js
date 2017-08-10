@@ -6,10 +6,10 @@ const list = {
     backgroundColor:'red'
 }
 
-const List = ()=>{
+const ScrollView = ()=>{
     return(
-        <div style={ list }>3</div>
+        <div style={ list }>Scrollview</div>
     )
 }
        
-module.exports = List;
+module.exports = ScrollView;
