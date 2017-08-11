@@ -24,6 +24,8 @@
   "author": "kogm",
   "license": "MIT",
   "devDependencies": {
+    "@storybook/addon-options": "^3.2.3",
+    "@storybook/react": "^3.2.3",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
@@ -38,8 +40,7 @@
     "react-test-renderer": "^15.6.1",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.2",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "@storybook/react": "^3.2.3"
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "dependencies": {
     "react": "^15.6.1",
@@ -52,8 +53,8 @@
     "jest:watch": "yarn test -- --watch",
     "flow": "flow",
     "test": "flow && jest",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "start-storybook -p 6006 -s .storybook/img",
+    "build-storybook": "build-storybook -s .storybook/img"
   },
   "jest": {
     "testEnvironment": "jsdom",
