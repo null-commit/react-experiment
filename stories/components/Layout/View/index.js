@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { View } from '../../../../src/index.js';
 
     // const {
     //     display='column',
@@ -12,19 +13,21 @@ import React from 'react';
     //     case 'row': 
     //         tmpClassName = 'row-container';
     //         break;
+    //         break;
     //     case 'column':
     //         tmpClassName = 'column-container';
     //         break;
     //     default: 
-    //         break;
     // }   
-const View = ({...props}) => {
-
+const ViewScreen = ({...props}) => {
+    console.log('View ----------->', View);
+    console.log('View --------123--->');
     return(
         <div>
-           view2
+           view3
+           <View />
         </div>
     )
 }
 
-module.exports = View;
+module.exports = ViewScreen;
