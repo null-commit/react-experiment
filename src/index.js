@@ -1,18 +1,21 @@
 const ReactComponent = {
+    /***********apis**********************/
+    get StyleSheet (){ return require('./apis/StyleSheet'); },
+    /***********Components**********************/
     //Combination
-    get ListView (){ return require('./Combination/ListView'); },
+    get ListView (){ return require('./components/Combination/ListView'); },
     // get ScrollView (){ return require('./Combination/ScrollView'); },
     //DataDisplay
-    get Grid () { return require('./DataDisplay/Grid'); },
-    get Icon () { return require('./DataDisplay/Icon'); },
-    get Text () { return require('./DataDisplay/Text'); },
+    get Grid () { return require('./components/DataDisplay/Grid'); },
+    get Icon () { return require('./components/DataDisplay/Icon'); },
+    get Text () { return require('./components/DataDisplay/Text'); },
     //Navigation
-    get NavBar () { return require('./Navigation/NavBar'); },
-    get Tabbar () { return require('./Navigation/Tabbar'); },
-    get TabItem () { return require('./Navigation/Tabbar/TabItem.js'); },
+    get NavBar () { return require('./components/Navigation/NavBar'); },
+    get Tabbar () { return require('./components/Navigation/Tabbar'); },
+    get TabItem () { return require('./components/Navigation/Tabbar/TabItem.js'); },
     //Layout
-    get View () { return require('./Layout/View'); },
-    get WhiteSpace () { return require('./Layout/WhiteSpace'); },
+    get View () { return require('./components/Layout/View'); },
+    get WhiteSpace () { return require('./components/Layout/WhiteSpace'); },
 }
 
 module.exports = ReactComponent;
