@@ -16,7 +16,6 @@ class StyleRegistry {
     
     //1.处理样式
     resolve(reactStyle, options= emptyObject){
-        console.log('reactStyle---1-------->',reactStyle);
         if (!reactStyle) {
             return emptyObject;
         }
@@ -44,9 +43,10 @@ class StyleRegistry {
                 this._registerById(id);
             }
         }
-
         const key = isArrayOfNumbers ? createCacheKey(flatArray.join('-')) : null;
-        return this._resolveStyleIfNeeded(flatArray, options, key);
+        const __style = this._resolveStyleIfNeeded(flatArray, options, key);
+
+        return { style: __style };
     }
 
     //2.注册样式
@@ -74,23 +74,11 @@ class StyleRegistry {
         return this._resolveStyle(style, options);
     }
     //5.取缓存样式
-    _resolveStyle(reactStyle,options){
+    _resolveStyle(reactStyle,options) {
         const flatStyle = flattenStyle(reactStyle);
-        
         const domStyle = createReactDOMStyle(flatStyle);
 
-        const props = Object.keys(domStyle).reduce(
-            (prop, styleProp)=>{
-                console.log('prop---------->',prop);
-                console.log('styleProp---------->',styleProp);
-                
-                const value = domStyle[styleProp];
-                if (value != null) {
-
-                }
-            },
-            { classList: [] }
-        );
+        return domStyle;
     }
 }
 

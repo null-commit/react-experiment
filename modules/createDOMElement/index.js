@@ -26,19 +26,10 @@ const eventHandlerNames = {
     onTouchStartCapture: true
 };
 
-// const adjustProps = domProps => {
-
-// }
 
 const createDOMElement = (component, props) => {
-    console.log('createDOMElement');
-
     const Component = component;
     const domProps = createDOMProps(Component, props);
-
-    console.log('Component--------->',Component);
-    console.log('domProps--------->',domProps);
-    // adjustProps(domProps);
 
     return <Component {...domProps} />;
 };

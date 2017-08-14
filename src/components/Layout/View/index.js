@@ -9,7 +9,6 @@ class View extends Component {
     static displayName = 'View';
 
     render(){
-        console.log('View.props============>',this.props);
         const {
             style,
             onLayout,

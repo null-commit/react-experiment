@@ -25,7 +25,6 @@ const resetStyles = StyleSheet.create({
 const defaultStyleResolver = style => StyleRegistry.resolve(style);
 
 const createDOMProps = (component, props, styleResolver) => {
-    console.log('createDOMProps');
     if (!styleResolver) {
         styleResolver = defaultStyleResolver;
     }
@@ -45,20 +44,17 @@ const createDOMProps = (component, props, styleResolver) => {
         component === 'ul' && resetStyles.list,
         providedStyle
     ];
-    const { className, style } = styleResolver(reactStyle);
-   
-    // if (className && className.constructor === String) {
-    //     domProps.className = domProps.className ? `${domProps.className} ${className}` : className;
-    // }
-    // if (component === 'a' && domProps.target === '_blank') {
-    //     domProps.rel = `${domProps.rel || ''} noopener noreferrer`;
-    // }
-    // if (testID && testID.constructor === String) {
-    //     domProps['data-testid'] = testID;
-    // }
-    // if (style) {
-    //     domProps.style = style;
-    // }
+    const { style } = styleResolver(reactStyle);
+    
+    if (component === 'a' && domProps.target === '_blank') {
+        domProps.rel = `${domProps.rel || ''} noopener noreferrer`;
+    }
+    if (testID && testID.constructor === String) {
+        domProps['data-testid'] = testID;
+    }
+    if (style) {
+        domProps.style = style;
+    }
     return domProps;
 }
 
