@@ -10,7 +10,7 @@ const Title = ({children})=> {
         </AppText>
     )
 }
-const Description = ({children})=> {
+export const Description = ({children})=> {
     return (
         <AppText style={styles.description}>
             {children}
