@@ -18,7 +18,8 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 
-import { View } from './components';
+import { View, Text } from './components';
 
 
 storiesOf('Components',module).add('View',()=><View />);
+storiesOf('Components',module).add('Text',()=><View />);

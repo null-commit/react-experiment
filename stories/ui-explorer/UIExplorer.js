@@ -1,10 +1,48 @@
 import React from 'react';
-import { View } from 'react-components';
+import { View, StyleSheet  } from '../../src/index.js';
 
-const UIExplorer = ()=> {
+import AppText from './AppText.js';
+
+const Title = ({children})=> {
     return(
-        <div>UIExplorer</div>
+        <AppText style={styles.title}>
+            {children}
+        </AppText>
     )
 }
+const Description = ({children})=> {
+    return (
+        <AppText style={styles.description}>
+            {children}
+        </AppText>
+    )
+}
+
+const UIExplorer = ({children , description , title})=> {
+    return(
+        <View style={styles.root}>
+            <Title>{title}</Title>
+            <Description>{description}</Description>
+            {children}
+        </View>
+    )
+}
+const styles = StyleSheet.create({
+    root:{
+        padding:'1rem',
+        flex:1
+    },
+    title: {
+        fontSize: '2rem'
+    },
+    description:{
+        color: '#666',
+        display: 'flex',
+        flexDirection: 'column',
+        fontSize: '1.25rem',
+        marginTop: 'calc(0.5 * 1.3125rem)',
+        marginBottom: 'calc(1.5 * 1.3125rem)'
+    }
+})
 
 export default UIExplorer;

@@ -5,7 +5,7 @@ const ReactComponent = {
     // //DataDisplay
     // get Grid () { return require('./DataDisplay/Grid'); },
     // get Icon () { return require('./DataDisplay/Icon'); },
-    // get Text () { return require('./DataDisplay/Text'); },
+    get Text () { return require('./DataDisplay/Text'); },
     // //Navigation
     // get NavBar () { return require('./Navigation/NavBar'); },
     // get Tabbar () { return require('./Navigation/Tabbar'); },

@@ -1,4 +1,7 @@
 import UIExplorer from './UIExplorer.js';
+import AppText from './AppText.js';
 
-
-export default UIExplorer;
+export {
+    UIExplorer,
+    AppText
+};
