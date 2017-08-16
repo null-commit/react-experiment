@@ -4,12 +4,15 @@ import ReactPropRegistry from '../../../modules/ReactPropRegistry';
 import flattenStyle from './flattenStyle';
 import flattenArray from '../../../modules/flattenArray';
 import StyleManager from './StyleManager.js';
+import { prefixInlineStyles } from '../../../modules/prefixStyles';
 
 const emptyObject = {};
 const createCacheKey = id => {
     const prefix = 'rc';
     return `${prefix}-${id}`;
 }
+
+const classListToString = list => list.join(' ').trim();
 
 class StyleRegistry {
     cache = { ltr: {}, rtl: {} };
@@ -44,9 +47,7 @@ class StyleRegistry {
             }
         }
         const key = isArrayOfNumbers ? createCacheKey(flatArray.join('-')) : null;
-        const __style = this._resolveStyleIfNeeded(flatArray, options, key);
-
-        return { style: __style };
+        return this._resolveStyleIfNeeded(flatArray, options, key);
     }
 
     //2.注册样式
@@ -88,7 +89,33 @@ class StyleRegistry {
         const flatStyle = flattenStyle(reactStyle);
         const domStyle = createReactDOMStyle(flatStyle);
 
-        return domStyle;
+        console.log('domStyle---------->',domStyle);
+
+        const props = Object.keys(domStyle)
+            .reduce((props, styleProp)=>{
+                const value = domStyle[styleProp];
+                if(value != null) {
+                    const className = this.styleManager.setDeclaration(styleProp, value);
+                    if(className){
+                        props.classList.push(className);
+                    } else {
+                        if(!props.style){
+                            props.style={}
+                        }
+                        props.style[styleProp] = value;
+                    }
+                }
+                return props;
+            },{ classList: [] });
+
+        props.className = classListToString(props.classList);
+
+        console.log('props---------->',props);
+
+        if (props.style) {
+            props.style = prefixInlineStyles(props.style);
+        }
+        return props;
     }
 }
 

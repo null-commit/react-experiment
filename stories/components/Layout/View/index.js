@@ -8,7 +8,7 @@ import UIExplorer,{
 } from '../../../ui-explorer'
 
 const ViewScreen = ({...props}) => {
-    console.log('UIExplorer------->',UIExplorer);
+    // console.log('UIExplorer------->',UIExplorer);
     return(
         <UIExplorer title='View' description='UI building block'>
             <DocItem 

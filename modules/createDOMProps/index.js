@@ -44,8 +44,11 @@ const createDOMProps = (component, props, styleResolver) => {
         component === 'ul' && resetStyles.list,
         providedStyle
     ];
-    const { style } = styleResolver(reactStyle);
-    
+    const { className, style } = styleResolver(reactStyle);
+
+    if (className && className.constructor === String) {
+        domProps.className = domProps.className ? `${domProps.className} ${className}` : className;
+    }
     if (component === 'a' && domProps.target === '_blank') {
         domProps.rel = `${domProps.rel || ''} noopener noreferrer`;
     }
