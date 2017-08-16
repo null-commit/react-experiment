@@ -22,4 +22,4 @@ import { View, Text } from './components';
 
 
 storiesOf('Components',module).add('View',()=><View />);
-storiesOf('Components',module).add('Text',()=><View />);
+storiesOf('Components',module).add('Text',()=><Text />);

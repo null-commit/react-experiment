@@ -1,35 +1,33 @@
 import React from 'react';
 
-import { View ,StyleSheet } from '../../../../src';
+import { Text ,StyleSheet } from '../../../../src';
 
-import {
-    UIExplorer,
-    AppText
+import UIExplorer,{
+    Description,
+    DocItem
 } from '../../../ui-explorer'
 
 
-const Title = ({children})=> {
-    return(
-        <AppText style={styles.title}>
-            {children}
-        </AppText>
-    )
-}
-
-const ViewScreen = ({...props}) => {
+const TextScreen = ({...props}) => {
     console.log('UIExplorer------->',UIExplorer);
     return(
-        <UIExplorer description='UI building block'>
-            <View style={styles.container}>
-                viewtest
-            </View>
+        <UIExplorer title='Text'>
+            <DocItem 
+                name='block'
+                label="web"
+                typeInfo='?string'
+                example={{
+                    code: '<Text>xxxx</Text>'
+                }}
+            /> 
+            <Text>xxxx</Text>
         </UIExplorer>
     )
 }
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:'red',
+        backgroundColor:'blue',
         height:60,
     },
     title: {
@@ -37,4 +35,4 @@ const styles = StyleSheet.create({
     },
 })
 
-module.exports = ViewScreen;
+module.exports = TextScreen;

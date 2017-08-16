@@ -14,7 +14,7 @@ const ViewScreen = ({...props}) => {
             <DocItem 
                 label="web"
                 example={{
-                    code: '<View hitSlop={{top: 10, bottom: 10, left: 0, right: 0}} />'
+                    code: '<View style={{height:60,backgroundColor:"red",}} />'
                 }}
             /> 
             <View style={styles.container}>

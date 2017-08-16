@@ -7,7 +7,7 @@ const DocItem = ({ description, example = {}, name, typeInfo, label })=> {
         <View style={styles.example}>
             {
                 name && 
-                <AppText style={style.title}>
+                <AppText style={styles.title}>
                     <PropText label={label} name={name} typeInfo={typeInfo} />
                 </AppText>
             }
@@ -36,6 +36,15 @@ const PropText = ({label ,name , typeInfo})=> {
             <Text style={styles.propName}>
                 {name}
             </Text>
+            {
+                typeInfo &&
+                <Text>
+                    {': '}
+                    <Text style={styles.code}>
+                    {typeInfo}
+                    </Text>
+                </Text>
+            }
         </AppText>
     )
 }
@@ -54,6 +63,9 @@ const styles = StyleSheet.create({
         padding: '1.3125rem',
         marginTop: '1.3125rem'
     },    
+    title: {
+        fontSize: '1rem'
+    },
     code: {
         fontFamily: 'monospace, monospace',
         lineHeight: '1.3125em'
@@ -65,8 +77,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#ddd',
         color: '#555',
         borderRadius: '1rem',
-        paddingVertical: '0.125rem',
-        paddingHorizontal: '0.5rem',
+        padding: '0.125rem 0.5rem',
         marginRight: '0.5rem'
     },
     webLabel:{

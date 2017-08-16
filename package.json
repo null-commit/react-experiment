@@ -54,6 +54,7 @@
     "jest:watch": "yarn test -- --watch",
     "flow": "flow",
     "test": "flow && jest",
+    "start": "yarn run storybook",
     "storybook": "start-storybook -p 6006 -s .storybook/img",
     "build-storybook": "build-storybook -s .storybook/img"
   },
