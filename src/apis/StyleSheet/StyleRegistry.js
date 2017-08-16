@@ -3,9 +3,9 @@ import createReactDOMStyle from './createReactDOMStyle';
 import ReactPropRegistry from '../../../modules/ReactPropRegistry';
 import flattenStyle from './flattenStyle';
 import flattenArray from '../../../modules/flattenArray';
+import StyleManager from './StyleManager.js';
 
 const emptyObject = {};
-
 const createCacheKey = id => {
     const prefix = 'rc';
     return `${prefix}-${id}`;
@@ -13,7 +13,7 @@ const createCacheKey = id => {
 
 class StyleRegistry {
     cache = { ltr: {}, rtl: {} };
-    
+    styleManager = new StyleManager();
     //1.处理样式
     resolve(reactStyle, options= emptyObject){
         if (!reactStyle) {
@@ -58,7 +58,17 @@ class StyleRegistry {
     //3.通过id注册样式
     _registerById(id) {
         const dir = 'ltr';//3.1没有国际化 阅读从左至右 I18nManager.isRTL ? 'rtl' : 'ltr';
+        const style = flattenStyle(id);
+        
         if(!this.cache[dir][id]){
+            const domStyle = createReactDOMStyle(style);
+            Object.keys(domStyle).forEach(styleProp=> {
+                const value = domStyle[styleProp];
+                if (value != null) {
+                    //遍历样式表单不空则声明样式
+                    this.styleManager.setDeclaration(styleProp, value);
+                }
+            });
             this.cache[dir][id] = true;
         }
     }

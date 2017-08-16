@@ -9,7 +9,7 @@ import UIExplorer,{
 
 
 const TextScreen = ({...props}) => {
-    console.log('UIExplorer------->',UIExplorer);
+    // console.log('UIExplorer------->',UIExplorer);
     return(
         <UIExplorer title='Text'>
             <DocItem 

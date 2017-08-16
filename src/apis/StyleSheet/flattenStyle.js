@@ -12,7 +12,7 @@ function flattenStyle(style) {
     if(style == null || typeof style === 'boolean'){
         return undefined;
     }
-    //2.style不是数组 去查询缓存
+    //2.style不是数组 通过style去查询缓存样式
     if(!Array.isArray(style)){
         return getStyle(style);
     }
