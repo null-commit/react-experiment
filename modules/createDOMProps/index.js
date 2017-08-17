@@ -22,7 +22,10 @@ const resetStyles = StyleSheet.create({
     }
 });
 
-const defaultStyleResolver = style => StyleRegistry.resolve(style);
+const defaultStyleResolver = style => {
+    
+    return StyleRegistry.resolve(style);
+}
 
 const createDOMProps = (component, props, styleResolver) => {
     if (!styleResolver) {

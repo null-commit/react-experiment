@@ -16,8 +16,12 @@ const createDeclarationString = (prop, val) => {
 
 //一个js对象 生成合法的css规则
 const generateCss = style => {
-    const _prefixStyles = prefixStyles(style);
-    return mapKeyValue(prefixStyles(style), createDeclarationString).sort().join(';')
+    const _prefixStyles = {};
+    Object.keys(style).map((item, index)=>{
+        const __styles = prefixStyles(style[item]);
+        _prefixStyles[item] = __styles;
+    });
+    return mapKeyValue(_prefixStyles, createDeclarationString).sort().join(';')
 };
 
 export default generateCss;

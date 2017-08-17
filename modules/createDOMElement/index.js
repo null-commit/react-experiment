@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import createDOMProps from '../createDOMProps';
 
 const eventHandlerNames = {
