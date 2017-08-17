@@ -85,31 +85,22 @@ class StyleRegistry {
         const domStyle = createReactDOMStyle(flatStyle);
         
         const props = Object.keys(domStyle).map( (item ,index)=> {
-            const style = domStyle[item];
-            return Object.keys({[item]: style })
-                    .reduce((props, styleProp)=>{
-                        console.log('props-------------->',props);
-                        console.log('styleProp-------------->',styleProp);
-                        const value = domStyle[styleProp];
-                        if(value != null) {
-                            const className = this.styleManager.setDeclaration(styleProp, value);
-                            console.log('className--_resolveStyle-------->',domStyle);
-                            if(className){
-                                props.classList.push(className);
-                            } else {
-                                if(!props.style){
-                                    props.style={}
-                                }
-                                props.style[styleProp] = value;
-                            }
-                        }
-
-                        return props;
-                    },{ classList: [] });
+            const value = domStyle[item];
+            if(value !=null ){
+                const className = this._setDeclaration({ [item]: domStyle[item] });
+                if(className){
+                    props.classList.push(className);
+                } else { 
+                    if(!props.style){
+                        props.style={}
+                    }
+                    props.style[styleProp] = value;
+                }
+            }
         });
-        // console.log('classList==============>',props);
-        // console.log('_resolveStyle-----className--------1------->',className);
-
+        console.log('classList==============>',props);
+        console.log('_resolveStyle-----className--------1------->',className);
+        
         // console.log('_resolveStyle-----props--------1------->',props);
         // props.className = classListToString(props.classList);
         // console.log('_resolveStyle-----props--------2------->',props);
