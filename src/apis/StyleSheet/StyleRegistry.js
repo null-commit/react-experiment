@@ -84,37 +84,30 @@ class StyleRegistry {
         const flatStyle = flattenStyle(reactStyle);
         const domStyle = createReactDOMStyle(flatStyle);
         
-        const props = Object.keys(domStyle).map( (item ,index)=> {
+        const props = { classList:[] , style:null };
+        Object.keys(domStyle).map( (item ,index)=> {
             const value = domStyle[item];
             if(value !=null ){
                 const className = this._setDeclaration({ [item]: domStyle[item] });
                 if(className){
                     props.classList.push(className);
                 } else { 
-                    if(!props.style){
+                    if(!props.style) {
                         props.style={}
                     }
                     props.style[styleProp] = value;
                 }
             }
         });
-        console.log('classList==============>',props);
-        console.log('_resolveStyle-----className--------1------->',className);
-        
-        // console.log('_resolveStyle-----props--------1------->',props);
-        // props.className = classListToString(props.classList);
-        // console.log('_resolveStyle-----props--------2------->',props);
-        // if (props.style) {
-        //     props.style = prefixInlineStyles(props.style);
-        // }
+        props.className = classListToString(props.classList);
+        if (props.style) {
+            props.style = prefixInlineStyles(props.style);
+        }
         return props;
     }
     //6.查找样式
     _setDeclaration(style) {
-        console.log('_setDeclaration=====查找样式style=========>',style);
         const className = this.styleManager.setDeclaration(style);
-        console.log('_setDeclaration------查找样式className----------->',className);
-
         return className;
     }
 }
