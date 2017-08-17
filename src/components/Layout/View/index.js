@@ -17,6 +17,7 @@ class View extends Component {
         } = this.props;
 
         otherProps.style = [styles.initial, style];
+        console.log('otherProps.style-------------->',otherProps.style);
 
         const component = 'div';
         

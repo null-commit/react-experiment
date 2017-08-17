@@ -23,7 +23,6 @@ const resetStyles = StyleSheet.create({
 });
 
 const defaultStyleResolver = style => {
-    
     return StyleRegistry.resolve(style);
 }
 
@@ -40,7 +39,7 @@ const createDOMProps = (component, props, styleResolver) => {
         style: providedStyle,
         ...domProps
     } = props;
-    
+
     const reactStyle = [
         component ==='a' && resetStyles.link,
         component ==='button' && resetStyles.button,

@@ -54,7 +54,8 @@ class StyleRegistry {
         }
         // 1.4 没有缓存样式 降低数组维度
         const flatArray = flattenArray(reactStyle);
-        
+        console.log('resolve----flatArray------->',flatArray);
+
         // 1.5 是否是数字数组
         let isArrayOfNumbers = true;
         for(let i = 0; i< flatArray.length; i++){
@@ -81,7 +82,10 @@ class StyleRegistry {
     }
     //5.处理样式
     _resolveStyle(reactStyle, options ) {
+        console.log('reactStyle------------------>',reactStyle);
         const flatStyle = flattenStyle(reactStyle);
+        console.log('flatStyle------------------>',flatStyle);
+        
         const domStyle = createReactDOMStyle(flatStyle);
         
         const props = { classList:[] , style:null };
