@@ -12,11 +12,8 @@ const ViewScreen = ({...props}) => {
         fontSize:25,
         backgroundColor:'black',
     }
-    const test3 = {
-        fontWeight:'bold',
-    }
     return(
-        <View style={[styles.container,styles.test,test2,test3]}>
+        <View style={[ styles.container,styles.test,test2 ]}>
             viewtest
         </View>
     )
