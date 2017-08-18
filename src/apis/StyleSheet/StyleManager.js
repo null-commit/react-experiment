@@ -38,20 +38,15 @@ class StyleManager {
         if(prerenderedStyleSheet){
             this.mainSheet = prerenderedStyleSheet;
         } else {
-            console.log('======================动态添加start===========================');
             document.head.insertAdjacentHTML('afterbegin',this.getStyleSheetHtml());
             this.mainSheet = document.getElementById(STYLE_ELEMENT_ID);
-            console.log('======================动态添加end===========================');
         }
     }
     getClassName(prop) {
         return this.cache.byProp[prop];
     }
     getStyleSheetHtml(){
-        console.log('======================getStyleSheets start===========================');
         const stylesheets = this.getStyleSheets();
-        console.log('======================getStyleSheets=========================',stylesheets);
-        console.log('======================getStyleSheets end===========================');
         return stylesheets
             .map(sheet=>{
                 return `<style id="${sheet.id}"></style>`
@@ -69,7 +64,7 @@ class StyleManager {
     setDeclaration(prop, value) {
         const key = Object.keys(prop)[0];
         let className = this.getClassName(key);
-
+        
         if(!className){
             //1.1.1 新建样式类
             className = createClassName(key, value);
@@ -77,9 +72,9 @@ class StyleManager {
             this._addToCache(className, prop, key);
             //1.1.3 通过id获取样式dom
             const sheet = this.mainSheet.sheet;
+            console.log('setDeclaration-----className------------>',className);
+            console.log('setDeclaration-----this.cache------------>',this.cache);
             //1.1.4不存在该样式
-            console.log('this.cache-------------->',this.cache);
-            
             if(!this.cache.byProp[className]){
                 //1.1.5 创建新css规则
                 const rule = createCssRule(className, prop ,key);

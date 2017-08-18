@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         margin:0,
         padding:0,
         textDecorationLine:'none',
-        wordWrap:'brewk-word'
+        wordBreak:'normal'
     },
     pressable:{
         cursor:'pointer',

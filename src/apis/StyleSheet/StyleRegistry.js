@@ -28,6 +28,9 @@ class StyleRegistry {
         this._setDeclaration(domStyle);
     }
     /***************************StyleSheet注册样式*****end*****************************/
+    
+    
+    /**************************读取StyleSheet注册样式*****start*****************************/
     //3.处理样式
     resolve(reactStyle, options= emptyObject){
         if (!reactStyle) {
@@ -47,29 +50,23 @@ class StyleRegistry {
         }
         // 1.4 没有缓存样式 降低数组维度
         const flatArray = flattenArray(reactStyle);
-        console.log('reactStyle----flatArray------->',flatArray);
-
-        // 1.5 是否是数字数组
-        for(let i = 0; i< flatArray.length; i++){
-            const id = flatArray[i];
-            if(typeof id === 'number'){
-                this._registerById(id);
-            }
-        }
-        return this._resolveStyle(reactStyle, options);
+        return this._resolveStyle(flatArray, options);
     }
    
     //4.处理样式
     _resolveStyle(reactStyle, options ) {
+        console.log('reactStyle------->',reactStyle);
         const flatStyle = flattenStyle(reactStyle);
-
+        console.log('flatStyle------->',flatStyle);
         const domStyle = createReactDOMStyle(flatStyle);
-
+        console.log('domStyle------->',domStyle);
+        
         const props = { classList:[] , style:null };
         Object.keys(domStyle).map( (item ,index)=> {
             const value = domStyle[item];
             if(value !=null ){
                 const className = this._setDeclaration({ [item]: domStyle[item] });
+                console.log('_resolveStyle className------->',className);
                 if(className){
                     props.classList.push(className);
                 } else { 
@@ -80,13 +77,15 @@ class StyleRegistry {
                 }
             }
         });
+        console.log('props-11111------>',props);
         props.className = classListToString(props.classList);
         if (props.style) {
             props.style = prefixInlineStyles(props.style);
         }
+        console.log('props-22222------>',props);
         return props;
     }
-    //6.查找样式
+    //5.查找样式
     _setDeclaration(style) {
         return Object.keys(style).map((styleProp,index)=>{
             const value = style[styleProp];
@@ -94,8 +93,8 @@ class StyleRegistry {
                 return this.styleManager.setDeclaration(style ,value);
             }
         });
-        return className;
     }
+    /**************************读取StyleSheet注册样式*****end*****************************/
 }
 
 export default StyleRegistry;

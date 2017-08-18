@@ -11,7 +11,7 @@ import UIExplorer,{
 const TextScreen = ({...props}) => {
     // console.log('UIExplorer------->',UIExplorer);
     return(
-        <Text>xxxx</Text>
+        <Text style={styles.textTest}>xxxx</Text>
     )
 }
 
@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     title: {
         fontSize: '2rem'
     },
+    textTest: {
+        color:'#faaf45'
+    }
 })
 
 module.exports = TextScreen;
