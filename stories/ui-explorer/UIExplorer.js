@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         flex:1
     },
     title: {
-        fontSize: '2rem'
+        fontSize: '2rem',
     },
     description:{
         color: '#666',

@@ -24,8 +24,9 @@ class StyleRegistry {
         const style = flattenStyle(id);//2.1通过 样式id 查找样式
         const domStyle = createReactDOMStyle(style);
 
-        // console.log('_registerById----domStyle------>',domStyle);
-        this._setDeclaration(domStyle);
+        // console.log('------111111-----注册样式-------111111------------>');
+        this._setDeclaration(domStyle,'register');
+        // console.log('------222222-----注册样式-------222222----------->');
     }
     /***************************StyleSheet注册样式*****end*****************************/
     
@@ -55,18 +56,14 @@ class StyleRegistry {
    
     //4.处理样式
     _resolveStyle(reactStyle, options ) {
-        console.log('reactStyle------->',reactStyle);
         const flatStyle = flattenStyle(reactStyle);
-        console.log('flatStyle------->',flatStyle);
         const domStyle = createReactDOMStyle(flatStyle);
-        console.log('domStyle------->',domStyle);
         
         const props = { classList:[] , style:null };
         Object.keys(domStyle).map( (item ,index)=> {
             const value = domStyle[item];
             if(value !=null ){
                 const className = this._setDeclaration({ [item]: domStyle[item] });
-                console.log('_resolveStyle className------->',className);
                 if(className){
                     props.classList.push(className);
                 } else { 
@@ -77,20 +74,18 @@ class StyleRegistry {
                 }
             }
         });
-        console.log('props-11111------>',props);
         props.className = classListToString(props.classList);
         if (props.style) {
             props.style = prefixInlineStyles(props.style);
         }
-        console.log('props-22222------>',props);
         return props;
     }
     //5.查找样式
-    _setDeclaration(style) {
+    _setDeclaration(style,type) {
         return Object.keys(style).map((styleProp,index)=>{
             const value = style[styleProp];
             if(value !=null){
-                return this.styleManager.setDeclaration(style ,value);
+                return this.styleManager.setDeclaration(style ,value,type);
             }
         });
     }

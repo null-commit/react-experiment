@@ -17,4 +17,5 @@ react-components
             <View style={}></View>
         </View>
     3.4 嵌套标签 
+    3.5 样式取相同名称异常 v 2017年08月18日22:39:01
     

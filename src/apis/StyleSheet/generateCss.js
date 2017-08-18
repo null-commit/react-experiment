@@ -21,7 +21,8 @@ const generateCss = style => {
         const __styles = prefixStyles(style[item]);
         _prefixStyles[item] = __styles;
     });
-    return mapKeyValue(_prefixStyles, createDeclarationString).sort().join(';')
+    const result = mapKeyValue(_prefixStyles, createDeclarationString);
+    return result.join(';');
 };
 
 export default generateCss;
