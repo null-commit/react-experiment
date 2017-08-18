@@ -59,8 +59,6 @@ class StyleManager {
             .join('\n')
     };
     getStyleSheets() {
-        const cache = this.cache.byProp;
-        console.log('======================cache cache===========================',cache);
         return[
             {
                 id:STYLE_ELEMENT_ID,
@@ -71,30 +69,22 @@ class StyleManager {
     setDeclaration(prop, value) {
         const key = Object.keys(prop)[0];
         let className = this.getClassName(key);
-        // console.log('value--------- -1------->',value);
-        // console.log('缓存---------0------->',this.cache);
-        // console.log('className---------1--key------->',key);
-        // console.log('className---------2---className------>',className);
 
         if(!className){
             //1.1.1 新建样式类
             className = createClassName(key, value);
-            // console.log('className-----3----hashclassName------->',className);
             //1.1.2 添加样式类到缓存中
             this._addToCache(className, prop, key);
-            // console.log('缓存---------4--------->',this.cache);
             //1.1.3 通过id获取样式dom
             const sheet = this.mainSheet.sheet;
-            // console.log('sheet------5------->',sheet);
             //1.1.4不存在该样式
+            console.log('this.cache-------------->',this.cache);
+            
             if(!this.cache.byProp[className]){
-                // console.log('dom 中不存在该样式-----6--------->');
                 //1.1.5 创建新css规则
                 const rule = createCssRule(className, prop ,key);
                 this.cache.byProp[className] = true;
-                // console.log('rule新建规则------7------------>',rule);
                 sheet.insertRule(rule, sheet.cssRules.length);
-                // console.log('插入规则结束------8----------->');
             }
         }
         // //1.2返回样式类
@@ -102,15 +92,8 @@ class StyleManager {
     }
 
     _addToCache(className, prop, key) {
-        // console.log('_addToCache-----prop------------>',prop);
-        // console.log('_addToCache-----key------------>',key);
         const cache = this.cache;
-        // if(!cache.byProp[className]){
-        //     cache.byProp[className] = {};
-        // }
-        // cache.byProp[prop][value] = className;
         cache.byClassName[className] = { prop, key };
-        // console.log('添加至缓存中------------>',cache);
     }
 }
 

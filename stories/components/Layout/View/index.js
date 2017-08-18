@@ -12,11 +12,30 @@ const ViewScreen = ({...props}) => {
         fontSize:25,
         backgroundColor:'black',
     }
+    const test3 = {
+        fontSize:25,
+        backgroundColor:'red',
+    }
     return(
-        <View style={[ styles.container,styles.test,test2 ]}>
-            viewtest
+        <View >
+            <View style={[ styles.container,styles.test,test2 ]}>
+                 viewtest
+            </View>
+            <View style={[ styles.container,styles.test,test3 ]}>
+                 viewtest
+            </View>
         </View>
     )
+    // return(
+    //     <UIExplorer 
+    //         title='View' 
+    //         description='ui block'
+    //     >
+    //         <View style={[ styles.container,styles.test,test2 ]}>
+    //             viewtest
+    //         </View>
+    //     </UIExplorer>
+    // )
 }
 
 const styles = StyleSheet.create({
