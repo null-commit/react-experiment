@@ -40,6 +40,8 @@ const createDOMProps = (component, props, styleResolver) => {
         ...domProps
     } = props;
 
+    console.log('createDOMprops-------props--------------->',props);
+
     const reactStyle = [
         component ==='a' && resetStyles.link,
         component ==='button' && resetStyles.button,

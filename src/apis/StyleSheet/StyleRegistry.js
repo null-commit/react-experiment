@@ -7,21 +7,18 @@ import StyleManager from './StyleManager.js';
 import { prefixInlineStyles } from '../../../modules/prefixStyles';
 
 const emptyObject = {};
-const createCacheKey = id => {
-    const prefix = 'rc';
-    return `${prefix}-${id}`;
-}
-
 const classListToString = list => list.join(' ').trim();
 
 class StyleRegistry {
-    cache = {};
     styleManager = new StyleManager();
     /************************StyleSheet注册样式******start**********************************/
     //1.通过StyleSheet注册样式
     register(style) {
+        console.log('======================注册样式id==start=========================');
+        console.log('======================StyleRegistry=====register====style===============',style);
         const id = ReactPropRegistry.register(style);//2.1返回样式id
         this._registerById(id);//2.2通过样式id注册
+        console.log('======================注册样式id end===========================');
 
         return id;
     }
@@ -30,12 +27,14 @@ class StyleRegistry {
         const style = flattenStyle(id);//2.1通过 样式id 查找样式
         const domStyle = createReactDOMStyle(style);
 
-        // console.log('domStyle----domStyle------>',domStyle);
-        this.styleManager.setDeclaration(domStyle);
+        console.log('_registerById----domStyle------>',domStyle);
+        this._setDeclaration(domStyle);
     }
     /***************************StyleSheet注册样式*****end*****************************/
     //3.处理样式
     resolve(reactStyle, options= emptyObject){
+        console.log('======================取样式 start===========================');
+        console.log('======================取样式 reactStyle===========================',reactStyle);
         if (!reactStyle) {
             return emptyObject;
         }
@@ -44,8 +43,7 @@ class StyleRegistry {
             console.log('reactStyle----number------->',reactStyle);
             
             this._registerById(reactStyle);
-            const key = createCacheKey(reactStyle);
-            return this._resolveStyleIfNeeded(reactStyle, options, key);
+            return this._resolveStyle(reactStyle, options);
         }
         // 1.3 不是数组
         if(!Array.isArray(reactStyle)){
@@ -54,40 +52,27 @@ class StyleRegistry {
         }
         // 1.4 没有缓存样式 降低数组维度
         const flatArray = flattenArray(reactStyle);
-        console.log('resolve----flatArray------->',flatArray);
+        console.log('reactStyle----flatArray------->',flatArray);
 
         // 1.5 是否是数字数组
-        let isArrayOfNumbers = true;
         for(let i = 0; i< flatArray.length; i++){
             const id = flatArray[i];
-            if(typeof id !== 'number'){
-                isArrayOfNumbers = false;
-            } else {
+            if(typeof id === 'number'){
                 this._registerById(id);
             }
         }
-        const key = isArrayOfNumbers ? createCacheKey(flatArray.join('-')) : null;
-        return this._resolveStyleIfNeeded(flatArray, options, key);
+        return this._resolveStyle(reactStyle, options);
     }
-
-    //4.判断样式是否缓存
-    _resolveStyleIfNeeded(style, options ,key) {
-        if(key){
-            if(!this.cache[key]){
-                this.cache[key] = this._resolveStyle(style, options);
-            }
-            return this.cache[key];
-        }
-        return this._resolveStyle(style, options);
-    }
-    //5.处理样式
+   
+    //4.处理样式
     _resolveStyle(reactStyle, options ) {
-        console.log('reactStyle------------------>',reactStyle);
         const flatStyle = flattenStyle(reactStyle);
-        console.log('flatStyle------------------>',flatStyle);
-        
+
+        console.log('createReactDOMStyle-------start----------->');
         const domStyle = createReactDOMStyle(flatStyle);
-        
+        console.log('createReactDOMStyle-------end----------->');
+        console.log('合并之后的样式------------->',domStyle);
+
         const props = { classList:[] , style:null };
         Object.keys(domStyle).map( (item ,index)=> {
             const value = domStyle[item];
@@ -107,11 +92,21 @@ class StyleRegistry {
         if (props.style) {
             props.style = prefixInlineStyles(props.style);
         }
+        console.log('======================取样式 end===========================');
         return props;
     }
     //6.查找样式
     _setDeclaration(style) {
-        const className = this.styleManager.setDeclaration(style);
+
+        console.log('注册样式-----------start------------>');
+        console.log('注册样式-----------style------------>',style);
+       
+        return Object.keys(style).map((styleProp,index)=>{
+            const value = style[styleProp];
+            if(value !=null){
+                return this.styleManager.setDeclaration(style ,value);
+            }
+        });
         return className;
     }
 }

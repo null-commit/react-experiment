@@ -11,17 +11,7 @@ import UIExplorer,{
 const TextScreen = ({...props}) => {
     // console.log('UIExplorer------->',UIExplorer);
     return(
-        <UIExplorer title='Text'>
-            <DocItem 
-                name='block'
-                label="web"
-                typeInfo='?string'
-                example={{
-                    code: '<Text>xxxx</Text>'
-                }}
-            /> 
-            <Text>xxxx</Text>
-        </UIExplorer>
+        <Text>xxxx</Text>
     )
 }
 
