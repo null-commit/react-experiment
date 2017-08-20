@@ -16,21 +16,16 @@ const ViewScreen = ({...props}) => {
         fontSize:25,
         backgroundColor:'red',
     }
-    // return(
-    //     <View >
-    //         <View style={[ styles.container,styles.test,test2 ]}>
-    //              viewtest
-    //         </View>
-    //         <View style={[ styles.container,styles.test,test3 ]}>
-    //              viewtest
-    //         </View>
-    //     </View>
-    // )
     return(
-        <UIExplorer 
-            title='View' 
-            description='ui block'
-        >
+        <UIExplorer title='View'>
+            <Description>ui block</Description>
+            <DocItem 
+                name='style'
+                typeInfo="?style"
+                example={{ 
+                    code:'<View style={}>viewtest</View>'
+                }}
+            />
             <View style={[ styles.container,styles.test,test2 ]}>
                 viewtest
             </View>

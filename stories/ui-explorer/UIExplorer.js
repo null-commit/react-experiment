@@ -22,7 +22,8 @@ const UIExplorer = ({children , description , title})=> {
     return(
         <View style={styles.root}>
             <Title>{title}</Title>
-            
+            {description}
+            {children}
         </View>
     )
 }
