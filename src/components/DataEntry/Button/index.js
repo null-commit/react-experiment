@@ -1,7 +1,9 @@
 import React ,{ Component }from 'react';
 
-import { View, StyleSheet } from '../../../../src';
+import { View, StyleSheet,Platform } from '../../../../src';
 
+
+console.log('Platform.OS------------>',Platform.OS);
 
 class Button extends Component {
     static displayName='Button';

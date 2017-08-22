@@ -25,12 +25,6 @@ const eventHandlerNames = {
     onTouchStartCapture: true
 };
 
-const u = navigator.userAgent, app = navigator.appVersion; 
-console.log('global----------------->', global.navigator);
-console.log('global---u---------------->', u);
-console.log('global---app-------------->', app);
-
-
 const createDOMElement = (component, props) => {
     const Component = component;
 

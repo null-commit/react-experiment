@@ -1,5 +1,8 @@
+
+
 const ReactComponent = {
     /***********apis**********************/
+    get Platform () { return require('./apis/Platform'); },
     get StyleSheet (){ return require('./apis/StyleSheet'); },
     /***********Components**********************/
     //Combination
