@@ -23,9 +23,6 @@ const ReactComponent = {
     get Button () { return require('./components/DataEntry/Button'); },
 }
 
-const testinfo = ReactComponent.Platform.DeviceInfo;
-console.log('设备信息----------->',testinfo);
-
-global.platform =  ReactComponent.Platform.OS ;
+global.deviceInfo =  ReactComponent.Platform.DeviceInfo;
 
 module.exports = ReactComponent;

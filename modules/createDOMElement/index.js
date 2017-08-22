@@ -31,22 +31,20 @@ const createDOMElement = (component, props) => {
     const domProps = createDOMProps(Component, props);
     
     const comProps = {};
-
-    console.log('global.platform--------->',global.platform);
-
     Object.keys(domProps).forEach( item => {
-        console.log('item---------->',item);
-        //清除事件
-        if(global.platform !=='web' && item.indexOf('onMouse')>-1){
+        //1.清除事件
+        if(global.deviceInfo.OS !=='web' && item.indexOf('onMouse')>-1){
             return;
         }
+        if(global.deviceInfo.OS ==='web' && item.indexOf('onTouch')>-1){
+            return;
+        }
+        //2.onPress 事件赋值添加到end事件之后
         if(item.indexOf('onPress')> -1 ){
             return;
         }
         comProps[item] = domProps[item];
     });
-    console.log('comProps===============>',comProps);
-    
 
     return <Component {...comProps} />;
 };
