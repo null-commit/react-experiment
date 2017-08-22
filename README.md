@@ -20,4 +20,8 @@ react-components
             <View style={}></View>
         </View>
     3.4 样式取相同名称异常 v 2017年08月18日22:39:01
+4.button
+    4.1 Button onPress 更加当前运行时环境判断执行事件
+5.platform
+    
     

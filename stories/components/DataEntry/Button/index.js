@@ -15,8 +15,9 @@ const ButtonScreen = ()=> {
 
 const styles = StyleSheet.create({
     button:{
-        backgroundColor:'red',
-        width:60,
+        backgroundColor: '#17BF63',
+        color:'#fff',
+        width:120,
         height:30,
         alignItems:'center',
         justifyContent:'center'
