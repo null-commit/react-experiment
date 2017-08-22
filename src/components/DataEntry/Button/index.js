@@ -1,15 +1,22 @@
 import React ,{ Component }from 'react';
 
-import { View, StyleSheet,Platform } from '../../../../src';
-
-
-console.log('Platform.OS------------>',Platform.OS);
+import { View, StyleSheet } from '../../../../src';
 
 class Button extends Component {
     static displayName='Button';
 
     _onMouseDown = ()=>{
-        console.log('点击------------->',this._onMouseDown);
+        console.log('点击----_onMouseDown--------->');
+    }
+    _onMouseUp = ()=> {
+        console.log('点击----_onMouseUp--------->');
+    }
+
+    _onTouchStart = ()=>{
+        console.log('点击----_onTouchStart--------->');
+    }
+    _onTouchEnd = ()=>{
+        console.log('点击----_onTouchEnd--------->');
     }
 
     render() {
@@ -19,11 +26,15 @@ class Button extends Component {
             ...other,
         } = this.props;
 
-        console.log('button----------------->',this);
+        // console.log('button----------------->',this);
 
         return(
             <View 
                 onPress={onPress}
+                onMouseDown={this._onMouseDown}
+                onMouseUp={this._onMouseUp}
+                onTouchStart={this._onTouchStart}
+                onTouchEnd={this._onTouchEnd}
                 style={[ 
                     styles.root, 
                     disabled && styles.actionable, 

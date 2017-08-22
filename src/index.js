@@ -1,5 +1,3 @@
-
-
 const ReactComponent = {
     /***********apis**********************/
     get Platform () { return require('./apis/Platform'); },
@@ -24,5 +22,10 @@ const ReactComponent = {
     //DataEntry
     get Button () { return require('./components/DataEntry/Button'); },
 }
+
+const testinfo = ReactComponent.Platform.DeviceInfo;
+console.log('设备信息----------->',testinfo);
+
+global.platform =  ReactComponent.Platform.OS ;
 
 module.exports = ReactComponent;
