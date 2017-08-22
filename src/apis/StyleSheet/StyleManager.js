@@ -1,6 +1,7 @@
 import ObjectHash from 'object-hash';
 import hash from '../../../modules/hash';
 import generateCss from './generateCss';
+import resetCSS from './resetCSS.js';
 
 const emptyObject = {};
 const PRE_STYLE_ELEMENT_ID = 'prereact-components-stylesheet';
@@ -43,12 +44,12 @@ class StyleManager {
     }
     getStyleSheetHtml(){
         const stylesheets = [
-            { id: PRE_STYLE_ELEMENT_ID,},
-            { id: STYLE_ELEMENT_ID }
+            { id: PRE_STYLE_ELEMENT_ID,textContent:`${resetCSS}`},
+            { id: STYLE_ELEMENT_ID,textContent:'' }
         ];
         return stylesheets
             .map(sheet=>{
-                return `<style id="${sheet.id}"></style>`
+                return `<style id="${sheet.id}">\n${sheet.textContent}</style>`
             })
             .join('\n')
     };

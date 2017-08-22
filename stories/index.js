@@ -18,8 +18,9 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 
-import { View, Text } from './components';
+import { View, Text, ActivityIndicator } from './components';
 
 
 storiesOf('Components',module).add('View',()=><View />);
 storiesOf('Components',module).add('Text',()=><Text />);
+storiesOf('Components',module).add('ActivityIndicator',()=><ActivityIndicator />);

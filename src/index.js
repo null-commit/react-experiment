@@ -16,6 +16,8 @@ const ReactComponent = {
     //Layout
     get View () { return require('./components/Layout/View'); },
     get WhiteSpace () { return require('./components/Layout/WhiteSpace'); },
+    //Feedback
+    get ActivityIndicator () { return require('./components/Feedback/ActivityIndicator'); },
 }
 
 module.exports = ReactComponent;
