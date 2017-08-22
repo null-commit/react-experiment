@@ -8,12 +8,12 @@ class ActivityIndicator extends Component {
     static defaultProps = {
         animating: true,
         color: '#1976D2',
-        hidesWhenStopped: true,
+        hideWhenStopped: true,
         size: 24
     };
 
     render() {
-        const { animating, color, hidesWhenStopped, size, style, ...other } = this.props;
+        const { animating, color, hideWhenStopped, size, style, ...other } = this.props;
         const svg = (
             <svg height="100%" viewBox="0 0 32 32" width="100%">
                 <circle
@@ -48,8 +48,9 @@ class ActivityIndicator extends Component {
         return(
             <View style={[
                 svgStyles , 
-                styles.animation
-                
+                styles.animation,
+                !animating && styles.animationPause,
+                !animating && hideWhenStopped && styles.hideWhenStopped
             ]}>
                 {svg}
             </View>
@@ -65,7 +66,10 @@ const styles = StyleSheet.create({
     },
     animationPause: {
         animationPlayState: 'paused'
-    }
+    },
+    hideWhenStopped: {
+        visibility: 'hidden'
+    },
 })
 
 module.exports = ActivityIndicator;

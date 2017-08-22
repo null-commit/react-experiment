@@ -18,7 +18,7 @@ const ActivityIndicatorScreen = ({...props})=> {
                     code:'<ActivityIndicator color="red" />'
                 }}
             />
-            <ActivityIndicator color='red'/>
+            <ActivityIndicator color='red' />
         </UIExplorer>
     )
 }
