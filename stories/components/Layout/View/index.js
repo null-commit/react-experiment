@@ -18,12 +18,15 @@ const ViewScreen = ({...props}) => {
     }
     return(
         <UIExplorer title='View'>
-            <Description>ui block</Description>
+            <Description>
+                ui block
+            </Description>
+
             <DocItem 
                 name='style'
                 typeInfo="?style"
                 example={{ 
-                    code:'<View style={}>viewtest</View>'
+                    code:'<View style={[ styles.container,styles.test,test2 ]}>viewtest</View>'
                 }}
             />
             <View style={[ styles.container,styles.test,test2 ]}>

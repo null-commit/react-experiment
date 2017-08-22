@@ -28,7 +28,17 @@ const eventHandlerNames = {
 
 const createDOMElement = (component, props) => {
     const Component = component;
+
     const domProps = createDOMProps(Component, props);
+    
+    Object.keys(domProps).forEach( item => {
+        if(item.indexOf('onPress')> -1 ){
+            domProps['onClick'] = domProps[item];
+            delete domProps[item];
+        }
+    });
+    console.log('domProps===============>',domProps);
+    
 
     return <Component {...domProps} />;
 };

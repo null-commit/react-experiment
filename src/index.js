@@ -18,6 +18,8 @@ const ReactComponent = {
     get WhiteSpace () { return require('./components/Layout/WhiteSpace'); },
     //Feedback
     get ActivityIndicator () { return require('./components/Feedback/ActivityIndicator'); },
+    //DataEntry
+    get Button () { return require('./components/DataEntry/Button'); },
 }
 
 module.exports = ReactComponent;
