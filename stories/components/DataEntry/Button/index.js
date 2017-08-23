@@ -2,10 +2,11 @@ import React from 'react';
 
 import { Button, StyleSheet } from '../../../../src';
 
-const clickFunction = () => {console.log('测试点击事件----------->');};
 
 const ButtonScreen = ()=> {
-
+    
+    const clickFunction = () => {console.log('测试点击事件----------->');};
+    
     return(
         <Button style={styles.button} onPress={clickFunction}>
             button

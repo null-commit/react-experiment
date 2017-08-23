@@ -4,19 +4,25 @@ import { View, StyleSheet } from '../../../../src';
 
 class Button extends Component {
     static displayName='Button';
+    state = {
+        reload: false,
+        activeOpacity: this.props.activeOpacity || 0.2,
+        focusedOpacity: this.props.focusedOpacity || 1,
+        opacity: 1,
+    }
+    _onPressStart = ()=>{
+        console.log('点击----onPressStart--------->');
+        this._setOpacityTo(this.state.activeOpacity);
+    }
+    _onPressEnd = ()=>{
+        console.log('点击----onPressEnd--------->');
+        this._setOpacityTo(this.state.focusedOpacity);
 
-    _onMouseDown = ()=>{
-        console.log('点击----_onMouseDown--------->');
-    }
-    _onMouseUp = ()=> {
-        console.log('点击----_onMouseUp--------->');
+        this.props.onPress && this.props.onPress();
     }
 
-    _onTouchStart = ()=>{
-        console.log('点击----_onTouchStart--------->');
-    }
-    _onTouchEnd = ()=>{
-        console.log('点击----_onTouchEnd--------->');
+    _setOpacityTo = (opacity)=> {
+        this.setState({opacity});
     }
 
     render() {
@@ -26,19 +32,21 @@ class Button extends Component {
             ...other,
         } = this.props;
 
-        // console.log('button----------------->',this);
-
+        const btnOpacityStyle = {
+            opacity: this.state.opacity,
+        }
+        
         return(
             <View 
-                onPress={onPress}
-                onMouseDown={this._onMouseDown}
-                onMouseUp={this._onMouseUp}
-                onTouchStart={this._onTouchStart}
-                onTouchEnd={this._onTouchEnd}
+                onMouseDown={this._onPressStart}
+                onMouseUp={this._onPressEnd}
+                onTouchStart={this._onPressStart}
+                onTouchEnd={this._onPressEnd}
                 style={[ 
                     styles.root, 
                     disabled && styles.actionable, 
                     this.props.style,
+                    btnOpacityStyle,
                     disabled && styles.buttonDisabled, 
                 ]}
             >
@@ -50,9 +58,9 @@ class Button extends Component {
 
 const styles = StyleSheet.create({
     root: {
-      transitionProperty: 'opacity',
-      transitionDuration: '0.15s',
-      userSelect: 'none'//用户不能选择文字
+        transitionProperty: 'opacity',
+        transitionDuration: '0.15s',
+        userSelect: 'none'//用户不能选择文字
     },
     actionable: {
         cursor: 'pointer',
