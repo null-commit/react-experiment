@@ -3,5 +3,5 @@
 yarn build
 git add .
 git commit -m $1
-git push origin $2
-git push origin $2:master
+git push $2 $3
+git push $2 $3:master
