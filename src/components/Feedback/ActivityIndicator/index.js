@@ -14,7 +14,7 @@ class ActivityIndicator extends Component {
 
     render() {
         const { animating, color, hideWhenStopped, size, style, ...other } = this.props;
-        const svg = (
+        const svgLabel = (
             <svg height="100%" viewBox="0 0 32 32" width="100%">
                 <circle
                     cx="16"
@@ -52,7 +52,7 @@ class ActivityIndicator extends Component {
                 !animating && styles.animationPause,
                 !animating && hideWhenStopped && styles.hideWhenStopped
             ]}>
-                {svg}
+                {svgLabel}
             </View>
         )
     }

@@ -11,8 +11,24 @@ module.exports = {
     // your custom plugins
   ],
   module: {
-    loaders: [
-      // add your custom loaders.
-    ],
+    // loaders: [
+    //   // add your custom loaders.
+    //   {
+    //     test: /\.(gif|jpe?g|png|svg)$/,
+    //     use: {
+    //       loader: 'url-loader',
+    //       options: { name: '[name].[ext]' }
+    //     }
+    //   }
+    // ],
+    rules:[
+      {
+        test: /\.(gif|jpe?g|png|svg)$/,
+        use: {
+          loader: 'url-loader',
+          options: { name: '[name].[ext]' }
+        }
+      }
+    ]
   },
 };

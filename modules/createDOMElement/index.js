@@ -28,7 +28,7 @@ const eventHandlerNames = {
 const createDOMElement = (component, props) => {
     const Component = component;
 
-    console.log('view---props------------->',props);
+    // console.log('view---props------------->',props);
     const domProps = createDOMProps(Component, props);
     
     const comProps = {};

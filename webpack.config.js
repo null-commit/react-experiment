@@ -28,7 +28,14 @@ module.exports = {
         }
       },
       {
-        test: /\.(gif|jpe?g|png|svg|woff|woff2|eot|ttf)$/,
+        test: /\.(woff|woff2|eot|ttf)$/,
+        use: {
+          loader: 'url-loader',
+          options: { name: '[name].[ext]' }
+        }
+      },
+      {
+        test: /\.(gif|jpe?g|png|svg)$/,
         use: {
           loader: 'url-loader',
           options: { name: '[name].[ext]' }

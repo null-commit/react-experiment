@@ -16,18 +16,26 @@ class Image extends Component {
     static resizeMode = '';
 
     render() {
-        console.log('img----------->',this.props);
+        // console.log('img----------->',this.props);
         const {
             children,
             source,
             alt
         } = this.props;
 
+
+        const src = this._resolveUri(source);
+        if(src ==='svgLabel'){
+            return (
+                <View style={styles.container}>
+                    {source}
+                </View>
+            )
+        }
         const imageStyle = {
             alt,
-            src: source && ( typeof source ==='object') ? `${source.uri}`: null 
+            src: src 
         }
-        console.log('imageStyle------------->',imageStyle);
         const isShowImage = this._isShowImage(source,imageStyle);
 
         return (
@@ -37,6 +45,24 @@ class Image extends Component {
         )
     }
 
+    //1.处理图片源
+    _resolveUri = (source)=> {
+        //1.1. 判断是否是svg图
+        const isSvg = this._isSvg(source);
+        
+        let uri;
+        if(isSvg === -1 ){
+            //1.2. uri 与 base64
+            uri = source && ( typeof source ==='object') ? `${source.uri}` : source || ''; 
+            return uri;
+        }
+        if(isSvg === 0) {//svg标签
+            return 'svgLabel';
+        }
+
+        return source;
+    }
+    //2.是否显示图片
     _isShowImage = (source , props)=>{
         const showImage = source 
         ?   createDOMElement('img',{
@@ -46,6 +72,20 @@ class Image extends Component {
             })
         :   null
         return showImage;    
+    }
+    //3.判断是否是svg图
+    _isSvg = (uri)=>{
+        console.log('svg uri---------------------->',uri);
+        const svgDataUriReg = /^data:image\/svg\+xml;/;
+        //svg 标签
+        if(uri.type === 'svg'){
+            return 0;
+        }
+        //svg图
+        if(svgDataUriReg.test(uri)){
+            return 1;
+        }
+        return -1;
     }
 }
 const styles = StyleSheet.create({

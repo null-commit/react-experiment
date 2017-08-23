@@ -3,13 +3,39 @@ import React from 'react';
 import { Image } from '../../../../src';
 
 const ImageScreen = ()=> {
-    const testT = require('./adPage.jpg');
-
-    console.log('testT------------->',testT);
-
+    // const testt = require.context('./adPage.jpg',true,/\.(jpe?g|png|svg|gif)$/);    
+    // const testt = require('./adPage.jpg');    
+    // const testt = require('./logo.svg');    
+    const testt = (
+        <svg height="100%" viewBox="0 0 32 32" width="100%">
+            <circle
+                cx="16"
+                cy="16"
+                fill="none"
+                r="14"
+                strokeWidth="4"
+                style={{
+                    stroke: 'green',
+                    opacity: 0.2
+                }}
+            />
+            <circle
+                cx="16"
+                cy="16"
+                fill="none"
+                r="14"
+                strokeWidth="4"
+                style={{
+                    stroke: 'green',
+                    strokeDasharray: 80,
+                    strokeDashoffset: 60
+                }}
+            />
+        </svg>    
+    )
     return(
         <Image 
-            source={{uri:'http://7xvvpv.com1.z0.glb.clouddn.com/adPage.jpg'}}
+            source={testt}
         />
     )
 }
