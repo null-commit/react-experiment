@@ -6,12 +6,12 @@
     3. yarn install 或者npm install
     
     如果没有yarn 使用 brew install yarn 
-## 1.View
+## 1.View v
 
-## 2.Text
+## 2.Text x
     * 2.1 Text 中不能使用 \n \t 等转义字符 
     * 2.2 字符超出文本容器范围没有换行
-## 3.StyleSheet
+## 3.StyleSheet v
     * 3.1 不支持基础组件行内样式 v 2017年08月18日16:37:24
         const styles = StyleSheet({
             container:{},
@@ -26,8 +26,15 @@
             <View style={}></View>
         </View>
     * 3.4 样式取相同名称异常 v 2017年08月18日22:39:01
-## 4.button
+## 4.button v
     * 4.1 Button onPress 更加当前运行时环境判断执行事件
-## 5.platform
+## 5.platform v 
+
+## 6.Image x
+    6.1 不支持 uri v 2017年08月23日16:57:45
+    6.2 不支持 本地文件
+    6.3 不支持 svg
+    6.4 不支持 base64 
+
     
     
