@@ -2,9 +2,9 @@ const ReactComponent = {
     // //Combination
     // get ListView (){ return require('./Combination/ListView'); },
     // // get ScrollView (){ return require('./Combination/ScrollView'); },
-    // //DataDisplay
+    //DataDisplay
     // get Grid () { return require('./DataDisplay/Grid'); },
-    // get Icon () { return require('./DataDisplay/Icon'); },
+    get Image () { return require('./DataDisplay/Image'); },
     get Text () { return require('./DataDisplay/Text'); },
     // Feedback
     get ActivityIndicator () { return require('./Feedback/ActivityIndicator'); },

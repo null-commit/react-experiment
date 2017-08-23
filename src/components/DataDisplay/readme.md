@@ -10,3 +10,4 @@
 ###9.Steps 步骤条
 ###10.Table (Deprecated) 表格
 ###11.Tag 标签
+###12.Image 图片

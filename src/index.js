@@ -10,6 +10,7 @@ const ReactComponent = {
     get Grid () { return require('./components/DataDisplay/Grid'); },
     get Icon () { return require('./components/DataDisplay/Icon'); },
     get Text () { return require('./components/DataDisplay/Text'); },
+    get Image () { return require('./components/DataDisplay/Image'); },
     //Navigation
     get NavBar () { return require('./components/Navigation/NavBar'); },
     get Tabbar () { return require('./components/Navigation/Tabbar'); },
