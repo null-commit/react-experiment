@@ -75,7 +75,6 @@ class Image extends Component {
     }
     //3.判断是否是svg图
     _isSvg = (uri)=>{
-        console.log('svg uri---------------------->',uri);
         const svgDataUriReg = /^data:image\/svg\+xml;/;
         //svg 标签
         if(uri.type === 'svg'){
