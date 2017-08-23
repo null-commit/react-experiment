@@ -1,74 +1,35 @@
 import React ,{ Component }from 'react';
 
-import { View, StyleSheet } from '../../../../src';
+import { TouchableOpacity, StyleSheet } from '../../../../src';
 
 class Button extends Component {
     static displayName='Button';
-    state = {
-        reload: false,
-        activeOpacity: this.props.activeOpacity || 0.2,
-        focusedOpacity: this.props.focusedOpacity || 1,
-        opacity: 1,
-    }
-    _onPressStart = ()=>{
-        console.log('点击----onPressStart--------->');
-        this._setOpacityTo(this.state.activeOpacity);
-    }
-    _onPressEnd = ()=>{
-        console.log('点击----onPressEnd--------->');
-        this._setOpacityTo(this.state.focusedOpacity);
-
-        this.props.onPress && this.props.onPress();
-    }
-
-    _setOpacityTo = (opacity)=> {
-        this.setState({opacity});
-    }
 
     render() {
         const {
-            onPress,
+            title,
             disabled=false,
+            onPress,
             ...other,
         } = this.props;
-
-        const btnOpacityStyle = {
-            opacity: this.state.opacity,
-        }
         
         return(
-            <View 
-                onMouseDown={this._onPressStart}
-                onMouseUp={this._onPressEnd}
-                onTouchStart={this._onPressStart}
-                onTouchEnd={this._onPressEnd}
-                style={[ 
-                    styles.root, 
-                    disabled && styles.actionable, 
-                    this.props.style,
-                    btnOpacityStyle,
-                    disabled && styles.buttonDisabled, 
-                ]}
-            >
-                {this.props.children}
-            </View>
+            <TouchableOpacity style={styles.button} onPress={onPress && onPress()}>
+                {title}
+            </TouchableOpacity>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    root: {
-        transitionProperty: 'opacity',
-        transitionDuration: '0.15s',
-        userSelect: 'none'//用户不能选择文字
-    },
-    actionable: {
-        cursor: 'pointer',
-        touchAction: 'manipulate'
-    },
-    buttonDisabled: {
-        backgroundColor: '#dfdfdf'
-    },
-});
+    button:{
+        backgroundColor: '#17BF63',
+        color:'#fff',
+        width:120,
+        height:30,
+        alignItems:'center',
+        justifyContent:'center'
+    }
+})
 
 module.exports = Button;

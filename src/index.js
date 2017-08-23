@@ -19,6 +19,8 @@ const ReactComponent = {
     get WhiteSpace () { return require('./components/Layout/WhiteSpace'); },
     //Feedback
     get ActivityIndicator () { return require('./components/Feedback/ActivityIndicator'); },
+    get TouchableOpacity () { return require('./components/Feedback/TouchableOpacity'); },
+
     //DataEntry
     get Button () { return require('./components/DataEntry/Button'); },
 }

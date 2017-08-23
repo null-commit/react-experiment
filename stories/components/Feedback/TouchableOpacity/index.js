@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, StyleSheet } from '../../../../src';
+import { TouchableOpacity, StyleSheet } from '../../../../src';
 
 
 const ButtonScreen = ()=> {
@@ -8,11 +8,9 @@ const ButtonScreen = ()=> {
     const clickFunction = () => {console.log('测试点击事件----------->');};
     
     return(
-        <Button 
-            title='buttontest' 
-            style={styles.button} 
-            onPress={clickFunction} 
-        />
+        <TouchableOpacity style={styles.button} onPress={clickFunction}>
+            button
+        </TouchableOpacity>
     )
 }
 

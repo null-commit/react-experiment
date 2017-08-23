@@ -22,6 +22,7 @@ import {
     View, 
     Text, 
     ActivityIndicator,
+    TouchableOpacity,
     Button
 } from './components';
 
@@ -29,6 +30,7 @@ import {
 storiesOf('Components',module).add('View',()=><View />);
 storiesOf('Components',module).add('Text',()=><Text />);
 storiesOf('Components',module).add('ActivityIndicator',()=><ActivityIndicator />);
+storiesOf('Components',module).add('TouchableOpacity',()=><TouchableOpacity />);
 storiesOf('Components',module).add('Button',()=><Button />);
 
 storiesOf('Components',module).add('Image',()=><div>暂无</div>);

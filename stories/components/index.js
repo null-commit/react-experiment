@@ -8,6 +8,7 @@ const ReactComponent = {
     get Text () { return require('./DataDisplay/Text'); },
     // Feedback
     get ActivityIndicator () { return require('./Feedback/ActivityIndicator'); },
+    get TouchableOpacity () { return require('./Feedback/TouchableOpacity'); },
     // //Navigation
     // get NavBar () { return require('./Navigation/NavBar'); },
     // get Tabbar () { return require('./Navigation/Tabbar'); },

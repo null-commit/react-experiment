@@ -5,3 +5,4 @@
 ###4.Popup 弹出层
 ###5.Progress 进度条
 ###6.Toast 轻提示
+###7.TouchableOpacity 触摸点击反馈
