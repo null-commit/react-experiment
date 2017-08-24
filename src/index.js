@@ -24,6 +24,7 @@ const ReactComponent = {
 
     //DataEntry
     get Button () { return require('./components/DataEntry/Button'); },
+    get TextInput () { return require('./components/DataEntry/TextInput'); },
 }
 
 global.deviceInfo =  ReactComponent.Platform.DeviceInfo;

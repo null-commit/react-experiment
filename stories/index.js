@@ -24,7 +24,8 @@ import {
     ActivityIndicator,
     TouchableOpacity,
     Button,
-    Image
+    Image,
+    TextInput
 } from './components';
 
 
@@ -35,7 +36,7 @@ storiesOf('Components',module).add('TouchableOpacity',()=><TouchableOpacity />);
 storiesOf('Components',module).add('Button',()=><Button />);
 storiesOf('Components',module).add('Image',()=><Image />);
 
-storiesOf('Components',module).add('TextInput',()=><div>暂无</div>);
+storiesOf('Components',module).add('TextInput',()=><TextInput />);
 storiesOf('Components',module).add('Modal',()=><div>暂无</div>);
 storiesOf('Components',module).add('ProgressBar',()=><div>暂无</div>);
 storiesOf('Components',module).add('Switch',()=><div>暂无</div>);

@@ -3,7 +3,7 @@
 ###2.Checkbox 复选框
 ###3.DatePicker 日期选择
 ###4.ImagePicker 图片选择器
-###5.InputItem 文本输入
+###5.TextInput 文本输入
 ###6.Picker 选择器
 ###7.PickerView 选择器
 ###8.Radio 单选框

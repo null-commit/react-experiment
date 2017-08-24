@@ -17,7 +17,8 @@ const ReactComponent = {
     get View () { return require('./Layout/View'); },
     // get WhiteSpace () { return require('./Layout/WhiteSpace'); },
     //DataEntry
-    get Button () { return require('./DataEntry/Button') }
+    get Button () { return require('./DataEntry/Button') },
+    get TextInput () { return require('./DataEntry/TextInput') }
 }
 
 
