@@ -37,6 +37,17 @@
         6.3.1 本地svg v 2017年08月23日22:20:24
         6.3.2 自定义svg标签 v 2017年08月23日22:37:54
     6.4 不支持 base64图片 v 2017年08月23日22:20:48
+## 7. TextInput 
+    7.1 不支持 onChange v2017年08月25日16:36:10
+    7.2 不支持 onBlur 
+    7.3 不支持 onFocus
+    7.4 不支持 onKeyDown
+    7.5 不支持 onKeyPress
+    7.6 不支持 pattern
+    7.7 不支持 disabled
+    7.8 不支持 autofocus
+    7.9 不支持 placeholder
+    7.10 不支持 required
 
     
     
