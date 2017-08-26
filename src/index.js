@@ -21,6 +21,7 @@ const ReactComponent = {
     //Feedback
     get ActivityIndicator () { return require('./components/Feedback/ActivityIndicator'); },
     get TouchableOpacity () { return require('./components/Feedback/TouchableOpacity'); },
+    get Modal () { return require('./components/Feedback/Modal'); },
 
     //DataEntry
     get Button () { return require('./components/DataEntry/Button'); },

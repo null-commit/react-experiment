@@ -3,6 +3,7 @@ import { setOptions } from '@storybook/addon-options';
 
 setOptions({
     name: 'react-components',
+    url: '#',
     goFullScreen: false,
     showLeftPanel: true,
     showDownPanel: false,

@@ -48,6 +48,10 @@
     7.8 不支持 autofocus
     7.9 不支持 placeholder
     7.10 不支持 required
+## 8.Modal
+    8.1 不支持 透明度
+    8.2 不支持 动画
+    8.3 不支持 背景点击事件
 
     
     

@@ -9,6 +9,7 @@ const ReactComponent = {
     // Feedback
     get ActivityIndicator () { return require('./Feedback/ActivityIndicator'); },
     get TouchableOpacity () { return require('./Feedback/TouchableOpacity'); },
+    get Modal () { return require('./Feedback/Modal'); },
     // //Navigation
     // get NavBar () { return require('./Navigation/NavBar'); },
     // get Tabbar () { return require('./Navigation/Tabbar'); },

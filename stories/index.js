@@ -25,21 +25,23 @@ import {
     TouchableOpacity,
     Button,
     Image,
-    TextInput
+    TextInput,
+    Modal
 } from './components';
 
 
+storiesOf('Components',module).add('ActivityIndicator',()=><ActivityIndicator />);
+storiesOf('Components',module).add('Button',()=><Button />);
+storiesOf('Components',module).add('Grid',()=><div>暂无</div>);
 storiesOf('Components',module).add('View',()=><View />);
 storiesOf('Components',module).add('Text',()=><Text />);
-storiesOf('Components',module).add('ActivityIndicator',()=><ActivityIndicator />);
+storiesOf('Components',module).add('TextInput',()=><TextInput />);
 storiesOf('Components',module).add('TouchableOpacity',()=><TouchableOpacity />);
-storiesOf('Components',module).add('Button',()=><Button />);
 storiesOf('Components',module).add('Image',()=><Image />);
 
-storiesOf('Components',module).add('TextInput',()=><TextInput />);
-storiesOf('Components',module).add('Modal',()=><div>暂无</div>);
-storiesOf('Components',module).add('ProgressBar',()=><div>暂无</div>);
-storiesOf('Components',module).add('Switch',()=><div>暂无</div>);
-storiesOf('Components',module).add('Grid',()=><div>暂无</div>);
+storiesOf('Components',module).add('Modal',()=><Modal />);
 storiesOf('Components',module).add('ListView',()=><div>暂无</div>);
 storiesOf('Components',module).add('ScrollView',()=><div>暂无</div>);
+
+storiesOf('Components',module).add('ProgressBar',()=><div>暂无</div>);
+storiesOf('Components',module).add('Switch',()=><div>暂无</div>);
