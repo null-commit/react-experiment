@@ -5,6 +5,7 @@
 //   '-webkit-tap-highlight-color:rgba(0,0,0,0);' 
 export default 
     'body{margin:0;}\n' +
+
     '@keyframes rc-ActivityIndicator-animation {'+
     '0% { -webkit-transform:rotate(0deg);transform:rotate(0deg); }'+
     '100% { -webkit-transform:rotate(360deg);transform:rotate(360deg); }'+

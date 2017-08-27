@@ -7,12 +7,13 @@ import {
     StyleSheet
 } from '../../../../src';
 
+
 class ModalScreen extends Component {
     state = {
         visible:false,
     }
-    render() {
 
+    render() {
         return (
             <View style={styles.container}>
                 <Button 
@@ -23,19 +24,23 @@ class ModalScreen extends Component {
                 <Modal 
                     visible={this.state.visible} 
                 >
-                    <Button title='关闭模态框' onPress = { this._onCloseModal }/>
+                    <Button 
+                        title='关闭模态框' 
+                        onPress = { this._onCloseModal }
+                    />
                 </Modal>
             </View>
         )
     }
     _onShowModal = ()=> {
+        console.log('_onShowModal');
         this.setState({
-            visible:true
+            visible: true
         })
     }
     _onCloseModal = ()=> {
         this.setState({
-            visible:false
+            visible: false
         })
     }
 }
