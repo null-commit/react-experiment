@@ -10,19 +10,51 @@ import {
 
 class ModalScreen extends Component {
     state = {
-        visible:false,
+        fade:false,
+        none:false,
+        slide:false,
     }
 
     render() {
         return (
             <View style={styles.container}>
                 <Button 
-                    title='打开模态框' 
+                    title='fade' 
                     onPress = { this._onShowModal }
                     style={styles.btn}
                 />
+                <Button 
+                    title='none' 
+                    onPress = { this._onShowModal }
+                    style={styles.btn}
+                />
+                <Button 
+                    title='slide' 
+                    onPress = { this._onShowModal }
+                    style={styles.btn}
+                />
+                
                 <Modal 
-                    visible={this.state.visible} 
+                    animationType='fade'
+                    visible={this.state.fade} 
+                >
+                    <Button 
+                        title='关闭模态框' 
+                        onPress = { this._onCloseModal }
+                    />
+                </Modal>
+                <Modal 
+                    animationType='none'
+                    visible={this.state.none} 
+                >
+                    <Button 
+                        title='关闭模态框' 
+                        onPress = { this._onCloseModal }
+                    />
+                </Modal>
+                <Modal 
+                    animationType='slide'
+                    visible={this.state.slide} 
                 >
                     <Button 
                         title='关闭模态框' 
@@ -32,15 +64,23 @@ class ModalScreen extends Component {
             </View>
         )
     }
-    _onShowModal = ()=> {
-        console.log('_onShowModal');
+    _onShowModal = e=> {
+        const name = e.title;
+        console.log('_onShowModal--------->',e);
         this.setState({
-            visible: true
+            [name]: true
         })
     }
     _onCloseModal = ()=> {
+        let name;
+        Object.keys(this.state).forEach(item=>{
+            if(this.state[item] ===true){
+                name = item;
+            }
+        })
+
         this.setState({
-            visible: false
+            [name]: false
         })
     }
 }
@@ -53,6 +93,7 @@ const styles = StyleSheet.create({
     },
     btn:{
         marginLeft:20,
+        marginTop:5,
     }
 })
 
