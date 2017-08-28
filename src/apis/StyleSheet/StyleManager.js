@@ -1,5 +1,5 @@
 import ObjectHash from 'object-hash';
-import hash from '../../../modules/hash';
+import hash from '../../modules/hash';
 import generateCss from './generateCss';
 import resetCSS from './resetCSS.js';
 

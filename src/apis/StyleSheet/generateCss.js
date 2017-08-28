@@ -1,6 +1,6 @@
 import hyphenateStyleName from 'hyphenate-style-name';
-import mapKeyValue from '../../../modules/mapKeyValue';
-import prefixStyles from '../../../modules/prefixStyles';
+import mapKeyValue from '../../modules/mapKeyValue';
+import prefixStyles from '../../modules/prefixStyles';
 import normalizeValue from './normalizeValue';
 
 const createDeclarationString = (prop, val) => {

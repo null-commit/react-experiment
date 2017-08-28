@@ -1,8 +1,8 @@
 import React ,{ Component } from 'react';
 
 import { StyleSheet } from '../../../../src';
-import createDOMElement from '../../../../modules/createDOMElement';
-import findNodeHandle from '../../../../modules/findNodeHandle';
+import createDOMElement from '../../../modules/createDOMElement';
+import findNodeHandle from '../../../modules/findNodeHandle';
 
 
 const normalizeEventHandler = handler => e=> {

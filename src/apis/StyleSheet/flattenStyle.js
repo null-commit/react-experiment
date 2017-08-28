@@ -1,4 +1,4 @@
-import ReactPropRegistry from '../../../modules/ReactPropRegistry';
+import ReactPropRegistry from '../../modules/ReactPropRegistry';
 
 function getStyle(style) {
     if(typeof style === 'number'){

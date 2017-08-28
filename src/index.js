@@ -1,7 +1,19 @@
+const __DEV__ = process.env.NODE_ENV;
+
+if(__DEV__ === 'production'){
+    global.console = {
+        info: () => {},
+        log: () => {},
+        warn: () => {},
+        error: () => {},
+    };
+}
+
 const ReactComponent = {
     /***********apis**********************/
     get Platform () { return require('./apis/Platform'); },
     get StyleSheet (){ return require('./apis/StyleSheet'); },
+    get StyleRegistry (){ return require('./apis/StyleSheet/registry'); },
     /***********Components**********************/
     //Combination
     get ListView (){ return require('./components/Combination/ListView'); },

@@ -1,6 +1,6 @@
 import React ,{ Component }from 'react';
 import { StyleSheet } from '../../../index.js'; 
-import createDOMElement from '../../../../modules/createDOMElement';
+import createDOMElement from '../../../modules/createDOMElement';
 
 class Text extends Component {
     static displayName = 'Text';

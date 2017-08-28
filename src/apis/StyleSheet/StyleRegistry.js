@@ -1,10 +1,10 @@
 
 import createReactDOMStyle from './createReactDOMStyle';
-import ReactPropRegistry from '../../../modules/ReactPropRegistry';
+import ReactPropRegistry from '../../modules/ReactPropRegistry';
 import flattenStyle from './flattenStyle';
-import flattenArray from '../../../modules/flattenArray';
+import flattenArray from '../../modules/flattenArray';
 import StyleManager from './StyleManager.js';
-import { prefixInlineStyles } from '../../../modules/prefixStyles';
+import { prefixInlineStyles } from '../../modules/prefixStyles';
 
 const emptyObject = {};
 const classListToString = list => list.join(' ').trim();

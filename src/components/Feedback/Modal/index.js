@@ -2,7 +2,7 @@ import React ,{ Component }from 'react';
 import Transition from 'react-transition-group/Transition';
 
 import { StyleSheet,View } from '../../../index.js';
-import createDOMElement from '../../../../modules/createDOMElement';
+import createDOMElement from '../../../modules/createDOMElement';
 
 const Fade = ({ children, duration =500, enter=duration, exit=duration,...props }) => {
     const { in:inProp } = props;

@@ -1,7 +1,7 @@
 import React , { Component } from 'react';
 import { bool } from 'prop-types';
 
-import createDOMElement from '../../../../modules/createDOMElement';
+import createDOMElement from '../../../modules/createDOMElement';
 
 import StyleSheet from '../../../apis/StyleSheet';
 

@@ -1,6 +1,5 @@
 
-import StyleRegistry from '../../src/apis/StyleSheet/registry.js';
-import StyleSheet from '../../src/apis/StyleSheet';
+import { StyleSheet,StyleRegistry } from '../../index.js';
 
 const emptyObject = {};
 

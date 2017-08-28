@@ -1,4 +1,4 @@
-import formatCSS from '../../../modules/formatCSS';
+import formatCSS from '../../modules/formatCSS';
 
 const normalizeValue = (property, value)=> {
     // console.log('property---normalizeValue--------->', property);

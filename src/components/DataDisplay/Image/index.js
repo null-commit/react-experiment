@@ -1,7 +1,7 @@
 import React,{ Component } from 'react';
 import { View ,StyleSheet } from '../../../index.js';
 
-import createDOMElement from '../../../../modules/createDOMElement';
+import createDOMElement from '../../../modules/createDOMElement';
 
 class Image extends Component {
     static displayName = 'Image';
