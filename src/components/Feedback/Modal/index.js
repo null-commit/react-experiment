@@ -2,6 +2,7 @@ import React ,{ Component }from 'react';
 
 import Fade from './Fade.js';
 import Normal from './Normal.js';
+import Slide from './Slide.js';
 
 class Modal extends Component {
     state = {items: ['hello', 'world', 'click', 'me']};
@@ -33,9 +34,9 @@ class Modal extends Component {
         }
         if(animationType==='slide') {
             return(
-                <Fade in={visible} enter={200} exit={1000}>
+                <Slide in={visible} enter={200} exit={1000}>
                     {children}
-                </Fade>
+                </Slide>
             )  
         }
 
