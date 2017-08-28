@@ -23,7 +23,7 @@ class Modal extends Component {
             children
         } = this.props;
         
-        console.log('animationType---------->',animationType);
+        // console.log('animationType---------->',animationType);
 
         if(animationType==='fade'){
             return(

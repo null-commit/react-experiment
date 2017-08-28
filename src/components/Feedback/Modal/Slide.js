@@ -3,6 +3,7 @@ import TransitionGroup from 'react-transition-group/TransitionGroup';
 import Transition from 'react-transition-group/Transition';
 import { View ,StyleSheet } from '../../../index.js';
 
+
 const Slide = ({ children, duration =500, enter=duration, exit=duration,...props }) => {
     const { in:inProp } = props;
 
@@ -14,52 +15,58 @@ const Slide = ({ children, duration =500, enter=duration, exit=duration,...props
     const transitionStyles={
         exited:{ opacity: 0, zIndex:-999, display:'none'},
         //添加中间态
-        entered:{ opacity: 1, zIndex:undefined, display:'block'}
     };
     //中间态
     if(inProp ===true) {
         transitionStyles['entering'] = midStatus;
     } else {
+        transitionStyles['entered'] = { opacity: 0, zIndex:-999, display:'none'};
         transitionStyles['exiting'] = midStatus;
     }
-    console.log('transitionStyles---------------->',transitionStyles);
-    console.log('inProp---------------->',inProp);
+    
     return (
-        <TransitionGroup>
-            <Transition
-                in={inProp}
-                timeout={{
-                    enter: enter,
-                    exit: exit,
-                }}
-            >
+        <Transition
+            in={inProp}
+            timeout={{
+                enter: enter,
+                exit: exit,
+            }}
+        >
             {
                 (state)=>{
-                    console.log('slide---------------->',state);
+                    let __inProp = false;
+                    if(inProp && state==='entered'){
+                        __inProp = true;
+                    }
+
                     return (
                         <View style={[styles.container,defaultStyle, transitionStyles[state] ]}>
+                            <Transition
+                                in={__inProp}
+                                timeout={{
+                                    enter: enter,
+                                    exit: exit,
+                                }}
+                            >
+                            {
+                                (state)=>{
+                                    console.log('slide----222 __inProp---------->',__inProp);
+                                    console.log('slide----222----------->',state);
+                                    return(
+                                        <View style={[ styles.slide ,defaultStyle]}>
+                                            {children}
+                                        </View>
+                                    )
+                                }
+                            }
+                            </Transition>
                         </View>
                     )
                 }
             }
-            </Transition>
-            
-            <Transition
-                in={inProp}
-                timeout={{
-                    enter: enter,
-                    exit: exit,
-                }}
-            >
-                <View style={[styles.container,defaultStyle, transitionStyles[state] ]}>
-                    {children}
-                </View>
-            </Transition>
-            
-        </TransitionGroup>
+        </Transition>
     )
 }
-
 const styles = StyleSheet.create({
     container:{
         position:'absolute',
@@ -68,6 +75,11 @@ const styles = StyleSheet.create({
         bottom:0,
         top:0,
         backgroundColor:'black',
+    },
+    slide:{
+        paddingTop:10,
+        paddingBottom:10,
+        backgroundColor:'red'
     }
 })
 
