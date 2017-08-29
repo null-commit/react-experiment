@@ -8,9 +8,9 @@ import { View ,StyleSheet } from '../../../index.js';
 class Slide extends Component {
     state = {
         reload:false,
+        transform:'translatex(-50%) translateY(200%)'
     }
-    display = 'none';
-    startSlide = false;
+    display = false;
 
     render(){
         const { 
@@ -24,7 +24,7 @@ class Slide extends Component {
         if(inProp){
             this.display = 'block';
         }
-
+        const __slide = this._onRenderSlide(children);
         return(
             <CSSTransition
                 in={inProp}
@@ -32,36 +32,44 @@ class Slide extends Component {
                     enter:enter,
                     exit:exit
                 }}
-                classNames="fade"
+                classNames='fade'
+                onEnter={this._onEnter}
                 onEntered={this._onEntered}
+                onExit={this._onExit}
+                onExiting={this._onExiting}
                 onExited={this._onExited}
             >
-                <View style={[styles.container,{display:this.display}]}>
-                    <CSSTransition
-                        in={this.startSlide}
-                        timeout={{
-                            enter:enter,
-                            exit:exit
-                        }}
-                        classNames="fade"
-                        onExited={this._onExited}
-                    >
-                        <View style={[styles.container,{display: this.startSlide ? 'block':'none'}]}>
-                            {children}
-                        </View>
-                    </CSSTransition>
+                <View style={[styles.container,{display:this.display ? 'block' : 'none'}]}>
+                    {__slide}
                 </View>
             </CSSTransition>
         )
     }
-    _onEntered = ()=> {
-        this.startSlide = true;
+    
+    _onRenderSlide = (children)=>{
+        return (
+            <View style={[styles.slideComponent, {transform: this.state.transform}]}>
+                {children}
+            </View>
+        )
+    }
+    _onEnter = ()=> {
         this.setState({
-            reload:!this.state.reload
+            transform:'translatex(-50%) translateY(200%)'
         }) 
     }
-    _onExited = (node, isAppearing)=>{
-        this.display = 'none';
+    _onEntered = ()=> {
+        this.setState({
+            transform:'translatex(-50%) translateY(-50%)'
+        }) 
+    }
+    _onExit = ()=> {
+        this.setState({
+            transform:'translatex(-50%) translateY(200%)'
+        }) 
+    }
+    _onExited = ()=> {
+        this.display = false;
         this.setState({
             reload:!this.state.reload
         })
@@ -81,6 +89,13 @@ const styles = StyleSheet.create({
         paddingTop:10,
         paddingBottom:10,
         backgroundColor:'red'
+    },
+    slideComponent:{
+        position: 'fixed',
+        left: '50%',
+        top: '50%',
+        transitionProperty: 'transform',
+        transitionDuration: '0.25s',
     }
 })
 

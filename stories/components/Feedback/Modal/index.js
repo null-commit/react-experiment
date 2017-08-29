@@ -47,19 +47,21 @@ class ModalScreen extends Component {
                     animationType='none'
                     visible={this.state.none} 
                 >
-                    <Button 
-                        title='关闭模态框' 
-                        onPress = { this._onCloseModal }
-                    />
+                        <Button 
+                            title='关闭模态框' 
+                            onPress = { this._onCloseModal }
+                        />
                 </Modal>
                 <Modal 
                     animationType='slide'
                     visible={this.state.slide} 
                 >
-                    <Button 
-                        title='关闭模态框' 
-                        onPress = { this._onCloseModal }
-                    />
+                    <View style={styles.modal}>
+                        <Button 
+                            title='关闭模态框' 
+                            onPress = { this._onCloseModal }
+                        />
+                    </View>
                 </Modal>
             </View>
         )
@@ -94,6 +96,11 @@ const styles = StyleSheet.create({
     btn:{
         marginLeft:20,
         marginTop:5,
+    },
+    modal:{
+        backgroundColor:'#fff',
+        width:350,
+        height:225,
     }
 })
 
