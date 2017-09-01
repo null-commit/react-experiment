@@ -12,6 +12,7 @@ class Text extends Component {
             style,
             onLayout,
             block,
+            preserveWhitespace,
             onPress,
             ...otherProps
         } = this.props;
@@ -24,7 +25,8 @@ class Text extends Component {
             styles.inital,
             style,
             numberOfLines === 1 && styles.singleLineStyle,
-            onPress && styles.pressable
+            onPress && styles.pressable,
+            preserveWhitespace && styles.preserveWhitespace
         ];
 
         const component = block ? 'span' : 'div';
@@ -41,10 +43,13 @@ const styles = StyleSheet.create({
         margin:0,
         padding:0,
         textDecorationLine:'none',
-        wordBreak:'normal'
+        wordWrap: 'break-word'
     },
     pressable:{
         cursor:'pointer',
+    },
+    preserveWhitespace: {
+        whiteSpace: 'pre-wrap'
     },
     singleLineStyle:{
         maxHeight:'100%',
