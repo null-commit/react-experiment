@@ -20,7 +20,9 @@ const TextScreen = ({...props}) => {
                     code:'textTest: {color:"#faaf45"} <Text style={styles.textTest}>xxxx</Text>'
                 }}
             />
-            <Text style={styles.textTest}>xxxxs{'\t'}sss</Text>
+            <Text style={styles.textTest}>
+                http://www.baidu.com
+            </Text>
         </UIExplorer>
     )
 }
@@ -34,7 +36,6 @@ const styles = StyleSheet.create({
         fontSize: '2rem'
     },
     textTest: {
-        width:90,
         color:'#faaf45'
     }
 })

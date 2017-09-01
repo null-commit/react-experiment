@@ -1,9 +1,13 @@
 import React from 'react';
-import { ScrollView } from '../../../../src';
+import { ScrollView, View ,Text} from '../../../../src';
 
 const ScrollViewScreen = ()=> {
     return(
-        <ScrollView />
+        <ScrollView >
+            <View><Text>123</Text></View>
+            <View><Text>123</Text></View>
+            <View><Text>123</Text></View>
+        </ScrollView>
     )
 }
 
