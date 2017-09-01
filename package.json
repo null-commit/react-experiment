@@ -1,10 +1,10 @@
 {
-  "name": "react-mobile-compoents",
+  "name": "react-components",
   "version": "0.0.1",
-  "description": "use react build mobile web cnxxjs2538@163.com",
+  "description": "use react build web cnxxjs2538@163.com",
   "main": "dist/index.js",
   "keywords": [
-    "react-mobile-components"
+    "react-components"
   ],
   "repository": {
     "type": "git",

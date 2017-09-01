@@ -11,11 +11,11 @@ class TouchableOpacity extends Component {
         opacity: 1,
     }
     _onPressStart = ()=>{
-        console.log('点击----onPressStart--------->');
+        // console.log('点击----onPressStart--------->');
         this._setOpacityTo(this.state.activeOpacity);
     }
     _onPressEnd = ()=>{
-        console.log('点击----onPressEnd--------->');
+        // console.log('点击----onPressEnd--------->');
         this._setOpacityTo(this.state.focusedOpacity);
 
         this.props.onPress && this.props.onPress();
