@@ -11,12 +11,16 @@ class ScrollView extends Component {
         onScroll:()=>{},
         scrollWithoutAnimation:false,
         getScrollableNode:()=>{},
+        scrollEnabled:true
     }
 
     render(){
         const { children } = this.props;
         return(
-            <ScrollViewBase>
+            <ScrollViewBase
+                {...this.props}
+
+            >
                 {children}
             </ScrollViewBase>
         )
