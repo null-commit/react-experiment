@@ -26,7 +26,9 @@ import {
     Button,
     Image,
     TextInput,
-    Modal
+    Modal,
+    ListView,
+    ScrollView
 } from './components';
 
 
@@ -40,8 +42,8 @@ storiesOf('Components',module).add('TouchableOpacity',()=><TouchableOpacity />);
 storiesOf('Components',module).add('Image',()=><Image />);
 
 storiesOf('Components',module).add('Modal',()=><Modal />);
-storiesOf('Components',module).add('ListView',()=><div>暂无</div>);
-storiesOf('Components',module).add('ScrollView',()=><div>暂无</div>);
+storiesOf('Components',module).add('ListView',()=><ListView />);
+storiesOf('Components',module).add('ScrollView',()=><ScrollView />);
 
 storiesOf('Components',module).add('ProgressBar',()=><div>暂无</div>);
 storiesOf('Components',module).add('Switch',()=><div>暂无</div>);

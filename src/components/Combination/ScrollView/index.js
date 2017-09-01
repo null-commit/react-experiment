@@ -1,15 +1,11 @@
-import React from 'react';
+import React,{ Component } from 'react';
 
-
-const list = {
-    flex:1,
-    backgroundColor:'red'
+class ScrollView extends Component {
+    render(){
+        return(
+            <div>ScrollView</div>
+        )
+    }
 }
 
-const ScrollView = ()=>{
-    return(
-        <div style={ list }>Scrollview</div>
-    )
-}
-       
 module.exports = ScrollView;

@@ -1,7 +1,7 @@
 const ReactComponent = {
     // //Combination
-    // get ListView (){ return require('./Combination/ListView'); },
-    // // get ScrollView (){ return require('./Combination/ScrollView'); },
+    get ListView (){ return require('./Combination/ListView'); },
+    get ScrollView (){ return require('./Combination/ScrollView'); },
     //DataDisplay
     // get Grid () { return require('./DataDisplay/Grid'); },
     get Image () { return require('./DataDisplay/Image'); },

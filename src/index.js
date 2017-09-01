@@ -17,7 +17,7 @@ const ReactComponent = {
     /***********Components**********************/
     //Combination
     get ListView (){ return require('./components/Combination/ListView'); },
-    // get ScrollView (){ return require('./Combination/ScrollView'); },
+    get ScrollView (){ return require('./components/Combination/ScrollView'); },
     //DataDisplay
     get Grid () { return require('./components/DataDisplay/Grid'); },
     get Icon () { return require('./components/DataDisplay/Icon'); },
