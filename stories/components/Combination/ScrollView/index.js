@@ -2,9 +2,16 @@ import React from 'react';
 import { ScrollView, View ,Text, StyleSheet} from '../../../../src';
 
 const ScrollViewScreen = ()=> {
+    const _onScroll = e=> {
+        console.log('_onScroll------------------------->',e);
+    }
+
     return(
         <View style={styles.container}>
-            <ScrollView style={styles.scrollView}>
+            <ScrollView 
+                style={styles.scrollView}
+                onScroll={_onScroll}
+            >
                 <View style={styles.item}><Text>123</Text></View>
                 <View style={styles.item}><Text>123</Text></View>
                 <View style={styles.item}><Text>123</Text></View>
