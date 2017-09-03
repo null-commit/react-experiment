@@ -25,7 +25,6 @@ class View extends Component {
     }
 }
 const styles = StyleSheet.create({
-    // https://github.com/facebook/css-layout#default-values
     initial: {
         alignItems: 'stretch',
         borderWidth: 0,
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
         position: 'relative',
         // fix flexbox bugs
         minHeight: 0,
-        minWidth: 0
+        minWidth: 0,
+        flexShrink: 0
     },
 })
 

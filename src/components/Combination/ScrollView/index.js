@@ -15,16 +15,21 @@ class ScrollView extends Component {
     }
 
     render(){
-        const { children } = this.props;
+        const { children, style } = this.props;
+
         return(
             <ScrollViewBase
                 {...this.props}
-
+                onScroll={this._onScroll}
             >
                 {children}
             </ScrollViewBase>
         )
     }
+    _onScroll = ()=> {
+        console.log('_onScroll-------------------');
+    }
 }
+
 
 module.exports = ScrollView;
