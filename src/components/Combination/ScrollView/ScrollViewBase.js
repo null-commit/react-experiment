@@ -47,7 +47,10 @@ const ScrollViewBase = ({...props})=>{
         scrollEnabled,//是否可以滚动
         style,//样式
         onScroll,
-        scrollEventThrottle
+        scrollEventThrottle,
+        //event
+        scrollTo,
+        scrollToEnd
     } = props;
 
     const _handleScrollTick = e => {
@@ -58,10 +61,12 @@ const ScrollViewBase = ({...props})=>{
     }
     const _handleScrollStart = e=> {
         isScrolling = true;
+        console.log('_handleScrollStart------->',isScrolling);
         scrollLastTick = Date.now();
     }
     const _handleScrollEnd = e=>{
         isScrolling = false;
+        console.log('_handleScrollEnd------->',isScrolling);
         if(onScroll){
             onScroll(normalizeScrollEvent(e));
         }
@@ -73,10 +78,12 @@ const ScrollViewBase = ({...props})=>{
         _debouncedOnScrollEnd(e);
         
         if(isScrolling){
+            console.log('isScrolling---true------->',isScrolling);
             if (_shouldEmitScrollEvent(scrollLastTick, scrollEventThrottle)) {
                 _handleScrollTick(e);
             }
         } else {
+            console.log('isScrolling---false------->',isScrolling);
             _handleScrollStart(e);
         }
 

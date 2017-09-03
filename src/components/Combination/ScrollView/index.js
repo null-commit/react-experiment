@@ -14,14 +14,24 @@ class ScrollView extends Component {
         scrollEnabled:true
     }
 
+    _onScroll = e => {
+        console.log('_onScroll------------------------->',e);
+    }
     render(){
         const { 
-            children, 
+            children,
+            refreshControl,
+            ...otherProps
         } = this.props;
+
+        const props = {
+            onScroll:this._onScroll,
+        }
 
         return(
             <ScrollViewBase
-                {...this.props}
+                {...otherProps}
+                {...props}
             >
                 {children}
             </ScrollViewBase>
