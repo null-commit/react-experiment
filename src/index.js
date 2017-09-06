@@ -18,6 +18,7 @@ const ReactComponent = {
     //Combination
     get ListView (){ return require('./components/Combination/ListView'); },
     get ScrollView (){ return require('./components/Combination/ScrollView'); },
+    get RefreshControl (){ return require('./components/Combination/RefreshControl'); },
     //DataDisplay
     get Grid () { return require('./components/DataDisplay/Grid'); },
     get Icon () { return require('./components/DataDisplay/Icon'); },

@@ -45,6 +45,18 @@ class ScrollView extends Component {
         const props = {
             onScroll:this._onScroll,
         }
+        if(refreshControl){
+            return React.cloneElement(
+                refreshControl,
+                { style: otherProps.style },
+                <ScrollViewBase
+                    {...otherProps}
+                    {...props}
+                >
+                    {children}
+                </ScrollViewBase>
+            )
+        }
 
         return(
             <ScrollViewBase

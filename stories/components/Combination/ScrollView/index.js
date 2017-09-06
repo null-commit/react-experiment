@@ -1,9 +1,10 @@
 import React ,{ Component }from 'react';
-import { ScrollView, View ,Text, StyleSheet} from '../../../../src';
+import { ScrollView, View ,Text, StyleSheet ,RefreshControl} from '../../../../src';
 
 class ScrollViewScreen extends Component {
     state = {
         reload:false,
+        isRefreshing:false,
     }
     page =1;
     config = [
@@ -19,6 +20,41 @@ class ScrollViewScreen extends Component {
         {id:9,title:'hh'},
     ];
     
+
+    // scrollTo = e => {
+    //     console.log('scrollTo----------->',e);
+    // }
+    render(){
+        
+        return(
+            <View style={styles.container}>
+                <ScrollView 
+                    style={styles.scrollView}
+                    onEndReached={this._onEndReached}
+                    scrollTo={this.scrollTo}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.isRefreshing}
+                            onRefresh={this._onRefresh}
+                            title="Loading..."
+                            titleColor="#00ff00"
+                            tintColor="#ff0000"
+                            progressBackgroundColor="#ffff00"
+                        />
+                    }
+                >
+                {
+                    this.config.map((item, index)=>
+                        <View key={'item'+index} style={styles.item}><Text>{item.id}</Text></View>
+                    )
+                }
+                </ScrollView>
+            </View>
+        )
+    }
+    _onRefresh = ()=> {
+        console.log('_onRefresh------------->');
+    }
     _onEndReached = ()=> {
         console.log('_onEndReached------------->');
         const config = [
@@ -39,27 +75,6 @@ class ScrollViewScreen extends Component {
         this.setState({
             reload:!this.state.reload
         })
-    }
-    // scrollTo = e => {
-    //     console.log('scrollTo----------->',e);
-    // }
-    render(){
-        
-        return(
-            <View style={styles.container}>
-                <ScrollView 
-                    style={styles.scrollView}
-                    onEndReached={this._onEndReached}
-                    scrollTo={this.scrollTo}
-                >
-                {
-                    this.config.map((item, index)=>
-                        <View key={'item'+index} style={styles.item}><Text>{item.id}</Text></View>
-                    )
-                }
-                </ScrollView>
-            </View>
-        )
     }
 }
 
