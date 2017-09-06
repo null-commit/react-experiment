@@ -2,8 +2,10 @@ import React,{ Component } from 'react';
 import ScrollViewBase from './ScrollViewBase.js';
 
 class ScrollView extends Component {
+    state = {
+        offSet:0
+    }
     static displayName='ScrollView';
-
     static defaultProps = {
         scrollTo:()=>{},
         scrollToEnd:()=>{},
@@ -23,12 +25,13 @@ class ScrollView extends Component {
 
         let scrollPosition; 
         let offSet = horizontal ? contentOffset.x : contentOffset.y;
-        let firstPageSize = horizontal ? layoutMeasurement.width : layoutMeasurement.height;;
+        let firstPageSize = horizontal ? layoutMeasurement.width : layoutMeasurement.height;
         let totalSize = horizontal ? contentSize.width : contentSize.height;
         
         //1.1 已滚动位置  
         scrollPosition = offSet + firstPageSize + onEndReachedThreshold;
-        console.log('scrollPosition--------->',scrollPosition);
+        this.setState({offSet:offSet})
+        console.log('scrollPosition-----scrollPosition---->',scrollPosition);
         //1.2 _handleScrolleToEnd函数 
         if(scrollPosition === totalSize){
             onEndReached && onEndReached(e);
@@ -48,7 +51,7 @@ class ScrollView extends Component {
         if(refreshControl){
             return React.cloneElement(
                 refreshControl,
-                { style: otherProps.style },
+                { style: otherProps.style, offSet:this.state.offSet },
                 <ScrollViewBase
                     {...otherProps}
                     {...props}
