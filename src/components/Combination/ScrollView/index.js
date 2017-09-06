@@ -25,7 +25,6 @@ class ScrollView extends Component {
         let firstPageSize = horizontal ? layoutMeasurement.width : layoutMeasurement.height;;
         let totalSize = horizontal ? contentSize.width : contentSize.height;
         
-
         //1.1 已滚动位置  
         scrollPosition = offSet + firstPageSize + onEndReachedThreshold;
         console.log('scrollPosition--------->',scrollPosition);
