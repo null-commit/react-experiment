@@ -19,8 +19,8 @@ class ScrollViewScreen extends Component {
         {id:9,title:'hh'},
     ];
     
-    scrollToEnd = ()=> {
-        console.log('scrollToEnd------------->');
+    _onEndReached = ()=> {
+        console.log('_onEndReached------------->');
         const config = [
             {id: this.page+'0',title:'hh'},
             {id: this.page+'1',title:'hh'},
@@ -40,16 +40,16 @@ class ScrollViewScreen extends Component {
             reload:!this.state.reload
         })
     }
-    scrollTo = e => {
-        console.log('scrollTo----------->',e);
-    }
+    // scrollTo = e => {
+    //     console.log('scrollTo----------->',e);
+    // }
     render(){
         
         return(
             <View style={styles.container}>
                 <ScrollView 
                     style={styles.scrollView}
-                    scrollToEnd={this.scrollToEnd}
+                    onEndReached={this._onEndReached}
                     scrollTo={this.scrollTo}
                 >
                 {

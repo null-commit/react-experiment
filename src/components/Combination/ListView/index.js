@@ -28,23 +28,46 @@ class ListView extends Component {
         console.log('ListView nextProps------------------->', nextProps);
 
     }
-
+    
     render(){
+        const children = [];
         const {
-            children,
-            style,
+            dataSource,
             renderRow,
-            onEndReached
+            // onEndReached,
+            renderHeader,
+            renderFooter,
+            renderSeparator,
+            ...scrollProps
         } = this.props;
 
+        const header = renderHeader && renderHeader();
+        const footer = renderFooter && renderFooter();
 
-        console.log('renderRow----------------->',renderRow);
+        const childrenArr = dataSource.map((item, index)=>{
+            const rowData = item; 
+            const sectionID = undefined;
+            const rowID = undefined; 
+            const highlightRow = undefined;
 
-        return(
-            <ScrollView style={style}>
-                {children}
-            </ScrollView>
-        )
+            return React.cloneElement(
+                renderRow(rowData,sectionID,rowID, highlightRow),
+                {
+                    key:`rc_${index}`
+                }
+            )
+        });
+
+        return React.cloneElement(
+            this._getContainerComp(scrollProps),
+            {},
+            header,
+            childrenArr,
+            footer
+        );
+    }
+    _getContainerComp = (props)=> {
+        return <ScrollView {...props} />
     }
 }
 

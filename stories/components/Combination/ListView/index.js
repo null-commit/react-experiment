@@ -5,6 +5,7 @@ class ListViewScreen extends Component{
     state = {
         reload:false
     }
+    page =1;
     config = [
         {id:1,title:'1'},
         {id:2,title:'2'},
@@ -19,12 +20,30 @@ class ListViewScreen extends Component{
     ]
 
     _onEndReached = ()=> {
-        console.log('_onEndReached----------------->');
+        console.log('_onEndReached------------->');
+        const config = [
+            {id: this.page+'0',title:'hh'},
+            {id: this.page+'1',title:'hh'},
+            {id: this.page+'2',title:'hh'},
+            {id: this.page+'3',title:'hh'},
+            {id: this.page+'4',title:'hh'},
+            {id: this.page+'5',title:'hh'},
+            {id: this.page+'6',title:'hh'},
+            {id: this.page+'7',title:'hh'},
+            {id: this.page+'8',title:'hh'},
+            {id: this.page+'9',title:'hh'},
+        ]
+        this.page += 1;
+        this.config = this.config.concat(config);
+        console.log('this.config------------>',this.config);
+        this.setState({
+            reload:!this.state.reload
+        })
     }
-    _onRenderRow = ()=> {
-        console.log('_onRenderRow----------------->');
+    _onRenderRow = (item)=> {
+        // console.log('_onRenderRow----------------->',item);
         return(
-            <View><Text>test</Text></View>
+            <View style={styles.row}><Text>{item.id}</Text></View>
         )
     }
     render(){
@@ -46,7 +65,12 @@ const styles = StyleSheet.create({
     },
     scrollView:{
         flex:1,
-        backgroundColor:'black'
+        backgroundColor:'orange'
+    },
+    row:{
+        height:250,
+        backgroundColor:'red',
+        marginTop:10,
     }
 })
 module.exports = ListViewScreen;

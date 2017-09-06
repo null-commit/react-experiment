@@ -12,11 +12,12 @@ class ScrollView extends Component {
         scrollWithoutAnimation:false,
         getScrollableNode:()=>{},
         scrollEnabled:true,
+        onEndReached:()=>{},
         onEndReachedThreshold:0,
     }
 
     _onScroll = e => {
-        const { scrollToEnd ,onEndReachedThreshold ,horizontal} = this.props;
+        const { onEndReached ,onEndReachedThreshold ,horizontal} = this.props;
         const { contentOffset, contentSize ,layoutMeasurement } = e.nativeEvent;
         //1.计算滑动位置 是否执行滚动事件
 
@@ -30,7 +31,7 @@ class ScrollView extends Component {
         console.log('scrollPosition--------->',scrollPosition);
         //1.2 _handleScrolleToEnd函数 
         if(scrollPosition === totalSize){
-            scrollToEnd && scrollToEnd(e);
+            onEndReached && onEndReached(e);
         }
     }
 
