@@ -60,4 +60,16 @@
     9.5 不支持 scrollToEnd
     9.6 不支持 水平滚动
     9.7 不支持 分页器 自定义分页器
+    9.8 不支持 renderSeparator
+## 10.ListView
+    10.1 不支持 事件冒泡 v 2017年09月03日23:37:53
+    10.2 不支持 根据帧数 执行事件冒泡 
+    10.3 不支持 refreshControl 自定义refreshControl
+    10.4 不支持 scrollTo
+    10.5 不支持 scrollToEnd
+    10.6 不支持 水平滚动
+    10.7 不支持 分页器 自定义分页器
+    10.8 不支持 renderSeparator
+## 11.refreshControl
+    11.1
     
