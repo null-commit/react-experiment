@@ -4,7 +4,7 @@ import { ScrollView, View ,Text, StyleSheet ,RefreshControl} from '../../../../s
 class ScrollViewScreen extends Component {
     state = {
         reload:false,
-        isRefreshing:false,
+        isRefreshing:true,
     }
     page =1;
     config = [
@@ -39,7 +39,7 @@ class ScrollViewScreen extends Component {
                             title="Loading..."
                             titleColor="#00ff00"
                             tintColor="#ff0000"
-                            progressBackgroundColor="#ffff00"
+                            progressBackgroundColor="blue"
                         />
                     }
                 >
