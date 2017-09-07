@@ -55,7 +55,7 @@
 ## 9.ScrollView
     9.1 不支持 事件冒泡 v 2017年09月03日23:37:53
     9.2 不支持 根据帧数 执行事件冒泡 
-    9.3 不支持 refreshControl 自定义refreshControl
+    9.3 不支持 refreshControl 自定义refreshControl v 2017年09月07日16:05:26
     9.4 不支持 scrollTo
     9.5 不支持 scrollToEnd
     9.6 不支持 水平滚动
@@ -64,7 +64,7 @@
 ## 10.ListView
     10.1 不支持 事件冒泡 v 2017年09月03日23:37:53
     10.2 不支持 根据帧数 执行事件冒泡 
-    10.3 不支持 refreshControl 自定义refreshControl
+    10.3 不支持 refreshControl 自定义refreshControl 
     10.4 不支持 scrollTo
     10.5 不支持 scrollToEnd
     10.6 不支持 水平滚动

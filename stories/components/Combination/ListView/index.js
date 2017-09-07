@@ -54,6 +54,7 @@ class ListViewScreen extends Component{
                     dataSource={this.config}
                     onEndReached={this._onEndReached}
                     renderRow={this._onRenderRow}
+                    PaginationComponent={<View style={styles.pagination}><Text>123</Text></View>}
                 />
             </View>
         )
@@ -71,6 +72,10 @@ const styles = StyleSheet.create({
         height:250,
         backgroundColor:'red',
         marginTop:10,
+    },
+    pagination:{
+        height:100,
+        backgroundColor:'green'
     }
 })
 module.exports = ListViewScreen;
