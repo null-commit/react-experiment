@@ -10,19 +10,26 @@ class RefreshControl extends Component {
     static displayName='RefreshControl';
 
     state = {
-        visible:false
+        refreshing:false,
     }
-    initPosition={clientX:0, clientY:0};
+
+    initPosition={clientX:0, clientY:0};//滑动初始位置
+    SLIDE_DISTANCE=0;//滑动距离
+    SHOW_LOADING_HEIGHT=0;//显示的loading加载器高度
     isLoading=true;
 
-    _onPress = ()=> {
-        console.log('点击隐藏显示');
-        this.setState({ visible:!this.state.visible })
+    SHOW_DISTANCE= 50;
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.refreshing !== this.state.refreshing){
+            this.setState({
+                refreshing:nextProps.refreshing
+            })
+        }
     }
+
     render(){
         const {
-            refreshing,
-            onRefresh,
             title,
             titleColor,
             tintColor,
@@ -38,7 +45,6 @@ class RefreshControl extends Component {
             tintColor,
             progressBackgroundColor,
         }
-
         return(
             <View 
                 style={this.props.style} 
@@ -48,26 +54,26 @@ class RefreshControl extends Component {
             >
                 {
                     component  
-                    ?   <CustomLoading in={this.state.visible} component={component} style={style}/>
-                    :   <DefaultLoading in={this.state.visible} style={style}/> 
+                    ?   <CustomLoading in={this.state.refreshing} onTransitionEnd={this._onTransitionEnd} component={component} style={style} height={this.SHOW_LOADING_HEIGHT}/>
+                    :   <DefaultLoading in={this.state.refreshing} onTransitionEnd={this._onTransitionEnd} style={style} height={this.SHOW_LOADING_HEIGHT}/> 
                 }
-                <Button title='显示/隐藏' onPress={this._onPress} />
                 {children}
             </View>
         )
     }
     //2.默认显示loading
+    // 判断是否是下拉
+    _isLoading = (e)=> {
+        this.SLIDE_DISTANCE = (e.clientY - this.initPosition.clientY);
+        const direction = this.SLIDE_DISTANCE > 0 ? true:false;
+        return direction;
+    }
     // 判断是可以下拉
     _canLoading = (offSet,isLoading)=> {
         if(offSet<=0 && isLoading){
-            console.log('success');
+            return true;
         }
         return false;
-    }
-    // 判断是否是下拉
-    _isLoading = (e)=> {
-        const direction = (e.clientY - this.initPosition.clientY)< 0 ? false: true;
-        return direction;
     }
     //=======================================//
     //2.0 判断是否可以下拉刷新
@@ -76,9 +82,19 @@ class RefreshControl extends Component {
         const { offSet } = this.props;
         const nativeEvent = normalizeTouchEvent(e);
         this.isLoading = this._isLoading(nativeEvent);
-
+        
         if(this._canLoading(offSet, this.isLoading)){
-            //2.0.1显示下拉组件
+            //显示下拉组件 状态
+            //2.0.1 滑动距离小于临界值 临界值是loading组件高度 这里假设50
+            if(this.SLIDE_DISTANCE < this.SHOW_DISTANCE){
+                this.SHOW_LOADING_HEIGHT = this.SLIDE_DISTANCE;
+                this.setState({ refreshing:true })
+            }
+            //2.0.2 滑动距离大于等于临界值
+            if(this.SLIDE_DISTANCE >= this.SHOW_DISTANCE){
+                this.SHOW_LOADING_HEIGHT = this.SHOW_DISTANCE;
+                this.setState({ refreshing:true })
+            }
         }
         e.stopPropagation();
     }
@@ -96,6 +112,12 @@ class RefreshControl extends Component {
     _onTouchEnd = e=>{
         console.log('_onTouchEnd------------->');
         e.stopPropagation();
+    }
+    //3.过渡动画执行完 执行刷新操作
+    _onTransitionEnd = e=> {
+        console.log('_onTransitionEnd------------->');
+        const { onRefresh } = this.props;
+        onRefresh && onRefresh();
     }
 }
 module.exports = RefreshControl;

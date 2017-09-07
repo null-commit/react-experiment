@@ -8,14 +8,21 @@ const styles = StyleSheet.create({
     }    
 })
 
-export const DefaultLoading = ({ duration =500, enter=duration, exit=duration, ...props })=> {
-    const { in:inProp , style ,height=100} = props;
+export const DefaultLoading = ({ ...props })=> {
+    const { 
+        duration =250, 
+        enter= duration, 
+        exit= duration,
+        in:inProp , 
+        style ,
+        height=50, 
+        onTransitionEnd
+    } = props;
     
     const defaultStyle = {
-        transition: `height ${duration}ms ease-in-out`,
+        transition: `height ${duration}ms linear`,
     }
-    
-    const midStatus = { opacity: 0, zIndex:undefined, display:'block'};
+    const midStatus = { height: 0, zIndex:undefined, display:'block'};
     const transitionStyles={
         exited:{ height: 0 ,display:'none'},
         entered:{ height: height ,display:'block'}
@@ -51,9 +58,8 @@ export const DefaultLoading = ({ duration =500, enter=duration, exit=duration, .
         >
         {
             (state)=> {
-                console.log('组件状态--------------------->',state);
                 return(
-                    <View style={[container ,defaultStyle, transitionStyles[state]]}>
+                    <View style={[container ,defaultStyle, transitionStyles[state]]} onTransitionEnd={onTransitionEnd}>
                         <Text style={loadingTitle}>{title}</Text>
                     </View>
                 )
@@ -66,7 +72,8 @@ export const DefaultLoading = ({ duration =500, enter=duration, exit=duration, .
 export const CustomLoading = ({duration =500, enter=duration, exit=duration, ...props})=> {
     const { in:inProp , style} = props;
     return(
-        <View><Text style={styles.loading}>default</Text></View>
+        <View style={[container ,defaultStyle, transitionStyles[state]]}>
+            <Text style={styles.loading}>default</Text>
+        </View>
     )
-} 
-
+}
