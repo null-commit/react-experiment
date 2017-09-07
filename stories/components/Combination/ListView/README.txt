@@ -1,1 +1,1 @@
-1. listview _onEndReached PC端无效  
+1. listview _onEndReached 在出现分页器时 PC端无效  
