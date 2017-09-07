@@ -44,6 +44,7 @@ class ScrollViewScreen extends Component {
                             titleColor="#00ff00"
                             tintColor="#ff0000"
                             progressBackgroundColor="blue"
+                            component={<View><Text style={{color:'red'}}>xxx</Text></View>}
                         />
                     }
                 >

@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     }    
 })
 
-export const DefaultLoading = ({ ...props })=> {
+const Loading = ({ ...props })=> {
     const { 
         duration =250, 
         enter= duration, 
@@ -16,7 +16,8 @@ export const DefaultLoading = ({ ...props })=> {
         in:inProp , 
         style ,
         height=50, 
-        onTransitionEnd
+        onTransitionEnd,
+        component
     } = props;
     
     const defaultStyle = {
@@ -60,7 +61,11 @@ export const DefaultLoading = ({ ...props })=> {
             (state)=> {
                 return(
                     <View style={[container ,defaultStyle, transitionStyles[state]]} onTransitionEnd={onTransitionEnd}>
-                        <Text style={loadingTitle}>{title}</Text>
+                        {
+                            !component 
+                            ?   <Text style={loadingTitle}>{title}</Text>
+                            :   component
+                        }
                     </View>
                 )
             }
@@ -68,12 +73,4 @@ export const DefaultLoading = ({ ...props })=> {
         </Transition>
     )
 }
-
-export const CustomLoading = ({duration =500, enter=duration, exit=duration, ...props})=> {
-    const { in:inProp , style} = props;
-    return(
-        <View style={[container ,defaultStyle, transitionStyles[state]]}>
-            <Text style={styles.loading}>default</Text>
-        </View>
-    )
-}
+export default Loading;

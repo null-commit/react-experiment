@@ -1,6 +1,6 @@
 import React ,{ Component }from 'react';
 import { View , Button} from '../../../index.js';
-import { DefaultLoading, CustomLoading } from './Loading.js';
+import Loading from './Loading.js';
 
 const normalizeTouchEvent = e => {
     return e.touches[0];
@@ -52,11 +52,13 @@ class RefreshControl extends Component {
                 onTouchStart={this._onTouchStart}
                 onTouchEnd={this._onTouchEnd}
             >
-                {
-                    component  
-                    ?   <CustomLoading in={this.state.refreshing} onTransitionEnd={this._onTransitionEnd} component={component} style={style} height={this.SHOW_LOADING_HEIGHT}/>
-                    :   <DefaultLoading in={this.state.refreshing} onTransitionEnd={this._onTransitionEnd} style={style} height={this.SHOW_LOADING_HEIGHT}/> 
-                }
+                <Loading 
+                    in={this.state.refreshing} 
+                    onTransitionEnd={this._onTransitionEnd} 
+                    component={component} 
+                    style={style} 
+                    height={this.SHOW_LOADING_HEIGHT} 
+                />
                 {children}
             </View>
         )

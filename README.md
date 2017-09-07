@@ -71,5 +71,5 @@
     10.7 不支持 分页器 自定义分页器
     10.8 不支持 renderSeparator
 ## 11.refreshControl
-    11.1
+    11.1 不支持 自定义loading组件 v2017年09月07日16:03:44
     
