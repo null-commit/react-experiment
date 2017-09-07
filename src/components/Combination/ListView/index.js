@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 
-import { ScrollView } from '../../../index.js';
+import { View, ScrollView } from '../../../index.js';
 
 class ListView extends Component {
     state = {
@@ -12,7 +12,6 @@ class ListView extends Component {
         initialListSize:1,
         dataSource:[],
         onEndReachedThreshold:20,
-        onEndReached:()=>{},
         scrollTo:undefined,
         scrollToEnd:undefined,
         pageSize:5,
@@ -30,20 +29,22 @@ class ListView extends Component {
     }
     
     render(){
-        const children = [];
         const {
             dataSource,
             renderRow,
-            // onEndReached,
             renderHeader,
             renderFooter,
             renderSeparator,
+            paginationComponent,
             ...scrollProps
         } = this.props;
 
         const header = renderHeader && renderHeader();
         const footer = renderFooter && renderFooter();
 
+        const pagination = paginationComponent && paginationComponent;
+
+        //children 组件
         const childrenArr = dataSource.map((item, index)=>{
             const rowData = item; 
             const sectionID = undefined;
@@ -58,12 +59,25 @@ class ListView extends Component {
             )
         });
 
+        if(pagination){
+            const ListComp = this._getListComp(scrollProps,header,childrenArr,footer);
+            return (
+                <View>
+                    {ListComp}
+                    {pagination}
+                </View>
+            )
+        }
+        return this._getListComp(scrollProps,header,childrenArr,footer);
+
+    }
+    _getListComp = (scrollProps,header,childrenArr,footer )=> {
         return React.cloneElement(
             this._getContainerComp(scrollProps),
             {},
             header,
             childrenArr,
-            footer
+            footer,
         );
     }
     _getContainerComp = (props)=> {

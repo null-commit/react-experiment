@@ -54,7 +54,7 @@ class ListViewScreen extends Component{
                     dataSource={this.config}
                     onEndReached={this._onEndReached}
                     renderRow={this._onRenderRow}
-                    PaginationComponent={<View style={styles.pagination}><Text>123</Text></View>}
+                    paginationComponent={<View style={styles.pagination}><Text>123</Text></View>}
                 />
             </View>
         )
