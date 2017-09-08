@@ -15,6 +15,7 @@ const Pagination = ({...props})=> {
     const {
         paginationBackgroudColor,
         paginationMarginTop,
+        paginationPaddingRight,
         paginationActiveButtonColor,
         paginationActiveValueColor,
         paginationInActiveButtonColor,
@@ -24,6 +25,7 @@ const Pagination = ({...props})=> {
         paginationHeight,
         paginationWidth,
         paginationBorderRadius,
+        paginationDirection='flex-end'
     } = props;
     
     console.log('Pagination---------->',props);
@@ -31,13 +33,17 @@ const Pagination = ({...props})=> {
         height: paginationHeight,
         backgroundColor: paginationBackgroudColor,
         marginTop: paginationMarginTop,
+        paddingRight:paginationPaddingRight,
+        justifyContent: paginationDirection
     }
     
     const paginationStyle = {
         borderColor: paginationBorderColor,
         borderWidth: paginationBorderWidth,
         borderRadius: paginationBorderRadius,
-        backgroundColor:'blue'
+        backgroundColor:'#999',
+        flexDirection:'row',
+        overflow:'hidden'
     }
 
     const buttonStyle = {

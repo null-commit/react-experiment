@@ -57,6 +57,7 @@ class ListViewScreen extends Component{
                     showPagination={true}
                     paginationBackgroudColor='red'
                     paginationMarginTop={10}
+                    paginationPaddingRight={30}
                     paginationActiveButtonColor='#faaf45'
                     paginationActiveValueColor='#fff'
                     paginationInActiveButtonColor='#fff'

@@ -40,6 +40,7 @@ class ListView extends Component {
             //分页器属性
             paginationBackgroudColor,
             paginationMarginTop,
+            paginationPaddingRight,
             paginationActiveButtonColor,
             paginationActiveValueColor,
             paginationInActiveButtonColor,
@@ -77,6 +78,7 @@ class ListView extends Component {
             const paginationStyles = {
                 paginationBackgroudColor,
                 paginationMarginTop,
+                paginationPaddingRight,
                 paginationActiveButtonColor,
                 paginationActiveValueColor,
                 paginationInActiveButtonColor,
