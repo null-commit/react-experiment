@@ -54,7 +54,17 @@ class ListViewScreen extends Component{
                     dataSource={this.config}
                     onEndReached={this._onEndReached}
                     renderRow={this._onRenderRow}
-                    paginationComponent={<View style={styles.pagination}><Text>123</Text></View>}
+                    showPagination={true}
+                    paginationBackgroudColor='red'
+                    paginationMarginTop={10}
+                    paginationActiveButtonColor='#faaf45'
+                    paginationActiveValueColor='#fff'
+                    paginationInActiveButtonColor='#fff'
+                    paginationInActiveValueColor='#ccc'
+                    paginationBorderColor='#ccc'
+                    paginationBorderWidth={1}
+                    paginationHeight={100}
+                    paginationBorderRadius={5}
                 />
             </View>
         )
@@ -73,9 +83,5 @@ const styles = StyleSheet.create({
         backgroundColor:'red',
         marginTop:10,
     },
-    pagination:{
-        height:100,
-        backgroundColor:'green'
-    }
 })
 module.exports = ListViewScreen;

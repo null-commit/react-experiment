@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 
 import { View, ScrollView } from '../../../index.js';
+import Pagination from './Pagination.js';
 
 class ListView extends Component {
     state = {
@@ -24,7 +25,7 @@ class ListView extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('ListView nextProps------------------->', nextProps);
+        // console.log('ListView nextProps------------------->', nextProps);
 
     }
     
@@ -35,14 +36,25 @@ class ListView extends Component {
             renderHeader,
             renderFooter,
             renderSeparator,
-            paginationComponent,
+            showPagination,
+            //分页器属性
+            paginationBackgroudColor,
+            paginationMarginTop,
+            paginationActiveButtonColor,
+            paginationActiveValueColor,
+            paginationInActiveButtonColor,
+            paginationInActiveValueColor,
+            paginationBorderColor,
+            paginationBorderWidth,
+            paginationHeight,
+            paginationWidth,
+            paginationBorderRadius,
             ...scrollProps
         } = this.props;
 
         const header = renderHeader && renderHeader();
         const footer = renderFooter && renderFooter();
 
-        const pagination = paginationComponent && paginationComponent;
 
         //children 组件
         const childrenArr = dataSource.map((item, index)=>{
@@ -59,12 +71,26 @@ class ListView extends Component {
             )
         });
 
-        if(pagination){
+        if(showPagination){
             const ListComp = this._getListComp(scrollProps,header,childrenArr,footer);
+            //分页器属性
+            const paginationStyles = {
+                paginationBackgroudColor,
+                paginationMarginTop,
+                paginationActiveButtonColor,
+                paginationActiveValueColor,
+                paginationInActiveButtonColor,
+                paginationInActiveValueColor,
+                paginationBorderColor,
+                paginationBorderWidth,
+                paginationHeight,
+                paginationWidth,
+                paginationBorderRadius,
+            };
             return (
                 <View>
                     {ListComp}
-                    {pagination}
+                    <Pagination {...paginationStyles}/>
                 </View>
             )
         }
