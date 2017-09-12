@@ -31,7 +31,7 @@ class ScrollView extends Component {
         //1.1 已滚动位置  
         scrollPosition = offSet + firstPageSize + onEndReachedThreshold;
         this.setState({offSet:offSet})
-        console.log('scrollPosition-----scrollPosition---->',scrollPosition);
+        // console.log('scrollPosition-----scrollPosition---->',scrollPosition);
         //1.2 _handleScrolleToEnd函数 
         if(scrollPosition === totalSize){
             onEndReached && onEndReached(e);

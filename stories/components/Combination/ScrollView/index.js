@@ -4,7 +4,7 @@ import { ScrollView, View ,Text, StyleSheet ,RefreshControl} from '../../../../s
 class ScrollViewScreen extends Component {
     state = {
         reload:false,
-        isRefreshing:false,
+        refreshing:false
     }
     page =1;
     config = [
@@ -19,13 +19,17 @@ class ScrollViewScreen extends Component {
         {id:8,title:'hh'},
         {id:9,title:'hh'},
     ];
-    
 
     // scrollTo = e => {
     //     console.log('scrollTo----------->',e);
     // }
+
+    componentWillUnmount() {
+        this.timer && clearTimeout(this.timer);
+    }
+
     render(){
-        
+
         return(
             <View style={styles.container}>
                 <ScrollView 
@@ -34,12 +38,13 @@ class ScrollViewScreen extends Component {
                     scrollTo={this.scrollTo}
                     refreshControl={
                         <RefreshControl
-                            refreshing={this.state.isRefreshing}
+                            refreshing={this.state.refreshing}
                             onRefresh={this._onRefresh}
                             title="Loading..."
                             titleColor="#00ff00"
                             tintColor="#ff0000"
-                            progressBackgroundColor="#ffff00"
+                            progressBackgroundColor="blue"
+                            component={<View><Text style={{color:'red'}}>xxx</Text></View>}
                         />
                     }
                 >
@@ -54,6 +59,9 @@ class ScrollViewScreen extends Component {
     }
     _onRefresh = ()=> {
         console.log('_onRefresh------------->');
+        this.timer = setTimeout(()=>{
+            this.setState({ refreshing:false })
+        },1500);
     }
     _onEndReached = ()=> {
         console.log('_onEndReached------------->');

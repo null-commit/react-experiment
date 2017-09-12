@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 
-import { ScrollView } from '../../../index.js';
+import { View, ScrollView } from '../../../index.js';
+import Pagination from './Pagination.js';
 
 class ListView extends Component {
     state = {
@@ -12,7 +13,6 @@ class ListView extends Component {
         initialListSize:1,
         dataSource:[],
         onEndReachedThreshold:20,
-        onEndReached:()=>{},
         scrollTo:undefined,
         scrollToEnd:undefined,
         pageSize:5,
@@ -25,25 +25,39 @@ class ListView extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('ListView nextProps------------------->', nextProps);
+        // console.log('ListView nextProps------------------->', nextProps);
 
     }
     
     render(){
-        const children = [];
         const {
             dataSource,
             renderRow,
-            // onEndReached,
             renderHeader,
             renderFooter,
             renderSeparator,
+            showPagination,
+            //分页器属性
+            paginationBackgroudColor,
+            paginationMarginTop,
+            paginationPaddingRight,
+            paginationActiveButtonColor,
+            paginationActiveValueColor,
+            paginationInActiveButtonColor,
+            paginationInActiveValueColor,
+            paginationBorderColor,
+            paginationBorderWidth,
+            paginationHeight,
+            paginationWidth,
+            paginationBorderRadius,
             ...scrollProps
         } = this.props;
 
         const header = renderHeader && renderHeader();
         const footer = renderFooter && renderFooter();
 
+
+        //children 组件
         const childrenArr = dataSource.map((item, index)=>{
             const rowData = item; 
             const sectionID = undefined;
@@ -58,12 +72,40 @@ class ListView extends Component {
             )
         });
 
+        if(showPagination){
+            const ListComp = this._getListComp(scrollProps,header,childrenArr,footer);
+            //分页器属性
+            const paginationStyles = {
+                paginationBackgroudColor,
+                paginationMarginTop,
+                paginationPaddingRight,
+                paginationActiveButtonColor,
+                paginationActiveValueColor,
+                paginationInActiveButtonColor,
+                paginationInActiveValueColor,
+                paginationBorderColor,
+                paginationBorderWidth,
+                paginationHeight,
+                paginationWidth,
+                paginationBorderRadius,
+            };
+            return (
+                <View>
+                    {ListComp}
+                    <Pagination {...paginationStyles}/>
+                </View>
+            )
+        }
+        return this._getListComp(scrollProps,header,childrenArr,footer);
+
+    }
+    _getListComp = (scrollProps,header,childrenArr,footer )=> {
         return React.cloneElement(
             this._getContainerComp(scrollProps),
             {},
             header,
             childrenArr,
-            footer
+            footer,
         );
     }
     _getContainerComp = (props)=> {

@@ -1,89 +1,125 @@
 import React ,{ Component }from 'react';
-import { View, Text } from '../../../index.js';
+import { View , Button} from '../../../index.js';
+import Loading from './Loading.js';
 
 const normalizeTouchEvent = e => {
     return e.touches[0];
 };
 
+class RefreshControl extends Component {
+    static displayName='RefreshControl';
 
-let initPosition={clientX:0, clientY:0};
-const RefreshControl = ({...props})=>{
-    let isLoading=true;
-    const {
-        refreshing,
-        onRefresh,
-        title,
-        titleColor,
-        tintColor,
-        progressBackgroundColor,
-        children,
-        component,
-        offSet,
-        horizontal,//暂不支持水平加载
-    } = props;
-    console.log('RefreshControl-------------->',props);
+    state = {
+        refreshing:false,
+    }
 
-    //1.存在自定义下拉加载器
-    if(component){
-        return <Text style={{color:'orange'}}>未实现</Text>;
+    initPosition={clientX:0, clientY:0};//滑动初始位置
+    SLIDE_DISTANCE=0;//滑动距离
+    SHOW_LOADING_HEIGHT=0;//显示的loading加载器高度
+    isLoading=true;
+
+    SHOW_DISTANCE= 50;
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.refreshing !== this.state.refreshing){
+            this.setState({
+                refreshing:nextProps.refreshing
+            })
+        }
+    }
+
+    render(){
+        const {
+            title,
+            titleColor,
+            tintColor,
+            progressBackgroundColor,
+            children,
+            component,
+            horizontal,//暂不支持水平加载
+        } = this.props;
+        
+        const style = {
+            title,
+            titleColor,
+            tintColor,
+            progressBackgroundColor,
+        }
+        return(
+            <View 
+                style={this.props.style} 
+                onTouchMove={this._onTouchMove}
+                onTouchStart={this._onTouchStart}
+                onTouchEnd={this._onTouchEnd}
+            >
+                <Loading 
+                    in={this.state.refreshing} 
+                    onTransitionEnd={this._onTransitionEnd} 
+                    component={component} 
+                    style={style} 
+                    height={this.SHOW_LOADING_HEIGHT} 
+                />
+                {children}
+            </View>
+        )
     }
     //2.默认显示loading
+    // 判断是否是下拉
+    _isLoading = (e)=> {
+        this.SLIDE_DISTANCE = (e.clientY - this.initPosition.clientY);
+        const direction = this.SLIDE_DISTANCE > 0 ? true:false;
+        return direction;
+    }
     // 判断是可以下拉
-    const _canLoading = (offSet,isLoading)=> {
+    _canLoading = (offSet,isLoading)=> {
         if(offSet<=0 && isLoading){
-            console.log('success');
+            return true;
         }
         return false;
     }
-    // 判断是否是下拉
-    const _isLoading = (e)=> {
-        const direction = (e.clientY -initPosition.clientY)< 0 ? false: true;
-        return direction;
-    }
-
     //=======================================//
     //2.0 判断是否可以下拉刷新
-    const _onTouchMove = e=>{
+    _onTouchMove = e=>{
         console.log('_onTouchStart------------->');
+        const { offSet } = this.props;
         const nativeEvent = normalizeTouchEvent(e);
-        isLoading = _isLoading(nativeEvent);
-
-        if(_canLoading(offSet, isLoading)){
-            //2.0.1显示下拉组件
+        this.isLoading = this._isLoading(nativeEvent);
+        
+        if(this._canLoading(offSet, this.isLoading)){
+            //显示下拉组件 状态
+            //2.0.1 滑动距离小于临界值 临界值是loading组件高度 这里假设50
+            if(this.SLIDE_DISTANCE < this.SHOW_DISTANCE){
+                this.SHOW_LOADING_HEIGHT = this.SLIDE_DISTANCE;
+                this.setState({ refreshing:true })
+            }
+            //2.0.2 滑动距离大于等于临界值
+            if(this.SLIDE_DISTANCE >= this.SHOW_DISTANCE){
+                this.SHOW_LOADING_HEIGHT = this.SHOW_DISTANCE;
+                this.setState({ refreshing:true })
+            }
         }
         e.stopPropagation();
     }
     //2.1 下拉 显示组件
-    const _onTouchStart = e=>{
+    _onTouchStart = e=>{
         console.log('_onTouchStart------------->');
         const nativeEvent = normalizeTouchEvent(e);
         //2.1.1 初始化起点位置
-        initPosition.clientX = nativeEvent.clientX;
-        initPosition.clientY = nativeEvent.clientY;
+        this.initPosition.clientX = nativeEvent.clientX;
+        this.initPosition.clientY = nativeEvent.clientY;
 
         e.stopPropagation();
     }
     //2.2 下拉结束 执行动画
-    const _onTouchEnd = e=>{
+    _onTouchEnd = e=>{
         console.log('_onTouchEnd------------->');
         e.stopPropagation();
     }
-
-    return(
-        <View 
-            style={props.style} 
-            onTouchMove={_onTouchMove}
-            onTouchStart={_onTouchStart}
-            onTouchEnd={_onTouchEnd}
-        >
-            {
-                refreshing ?
-                <Text style={{color:'orange'}}>loading</Text>:
-                null
-            }
-            {children}
-        </View>
-    )
-
+    //3.过渡动画执行完 执行刷新操作
+    _onTransitionEnd = e=> {
+        console.log('_onTransitionEnd------------->');
+        const { onRefresh } = this.props;
+        onRefresh && onRefresh();
+    }
 }
 module.exports = RefreshControl;

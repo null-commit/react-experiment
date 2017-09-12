@@ -1,9 +1,7 @@
 # react-components
 
 ## install
-    1.复制getRCComponents.sh到项目中
-    2../getRCComponents.sh执行脚本
-    3. yarn install 或者npm install
+    1. yarn install 或者npm install
     
     如果没有yarn 使用 brew install yarn 
 ## 1.View v
@@ -55,7 +53,7 @@
 ## 9.ScrollView
     9.1 不支持 事件冒泡 v 2017年09月03日23:37:53
     9.2 不支持 根据帧数 执行事件冒泡 
-    9.3 不支持 refreshControl 自定义refreshControl
+    9.3 不支持 refreshControl 自定义refreshControl v 2017年09月07日16:05:26
     9.4 不支持 scrollTo
     9.5 不支持 scrollToEnd
     9.6 不支持 水平滚动
@@ -64,12 +62,12 @@
 ## 10.ListView
     10.1 不支持 事件冒泡 v 2017年09月03日23:37:53
     10.2 不支持 根据帧数 执行事件冒泡 
-    10.3 不支持 refreshControl 自定义refreshControl
+    10.3 不支持 refreshControl 自定义refreshControl 
     10.4 不支持 scrollTo
     10.5 不支持 scrollToEnd
     10.6 不支持 水平滚动
     10.7 不支持 分页器 自定义分页器
     10.8 不支持 renderSeparator
 ## 11.refreshControl
-    11.1
+    11.1 不支持 自定义loading组件 v2017年09月07日16:03:44
     
