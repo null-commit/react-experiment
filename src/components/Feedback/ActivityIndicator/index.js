@@ -60,7 +60,7 @@ class ActivityIndicator extends Component {
 const styles = StyleSheet.create({
     animation: {
         animationDuration: '0.75s',
-        animationName: 'rc-ActivityIndicator-animation',
+        animationName: 'rc-activityIndicator-animation',
         animationTimingFunction: 'linear',
         animationIterationCount: 'infinite'
     },

@@ -1,11 +1,15 @@
 import React from 'react';
-import { View , StyleSheet, Text } from '../../../index.js';
+import { View , StyleSheet, Text , ActivityIndicator} from '../../../index.js';
 import Transition from 'react-transition-group/Transition';
 
 const styles = StyleSheet.create({
     loading:{
         color:'orange'
-    }    
+    },
+    activityIndicator:{
+        justifyContent:'center',
+        alignItems:'center',
+    }  
 })
 
 const Loading = ({ ...props })=> {
@@ -17,7 +21,8 @@ const Loading = ({ ...props })=> {
         style ,
         height=50, 
         onTransitionEnd,
-        component
+        component,
+        animating
     } = props;
     
     const defaultStyle = {
@@ -48,7 +53,6 @@ const Loading = ({ ...props })=> {
     const loadingTitle = {
         color: tintColor
     }
-
     return(
         <Transition 
             in={inProp}
@@ -63,7 +67,10 @@ const Loading = ({ ...props })=> {
                     <View style={[container ,defaultStyle, transitionStyles[state]]} onTransitionEnd={onTransitionEnd}>
                         {
                             !component 
-                            ?   <Text style={loadingTitle}>{title}</Text>
+                            ?   
+                                <View style={[styles.activityIndicator,{height:height}]}>
+                                    <ActivityIndicator animating={animating} hideWhenStopped={false} color='green'/>
+                                </View>
                             :   component
                         }
                     </View>
@@ -73,4 +80,6 @@ const Loading = ({ ...props })=> {
         </Transition>
     )
 }
+
+
 export default Loading;

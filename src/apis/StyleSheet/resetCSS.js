@@ -10,7 +10,7 @@ export default
     '.fade-exit {opacity: 1;}'+
     '.fade-exit.fade-exit-active {opacity: 0;transition: opacity 300ms ease-out;}'+
     
-    '@keyframes rc-ActivityIndicator-animation {'+
+    '@keyframes rc-activityIndicator-animation {'+
     '0% { -webkit-transform:rotate(0deg);transform:rotate(0deg); }'+
     '100% { -webkit-transform:rotate(360deg);transform:rotate(360deg); }'+
     '}\n'
