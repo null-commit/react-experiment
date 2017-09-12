@@ -1,9 +1,7 @@
 # react-components
 
 ## install
-    1.复制getRCComponents.sh到项目中
-    2../getRCComponents.sh执行脚本
-    3. yarn install 或者npm install
+    1. yarn install 或者npm install
     
     如果没有yarn 使用 brew install yarn 
 ## 1.View v
