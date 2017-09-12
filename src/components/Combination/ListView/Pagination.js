@@ -28,7 +28,7 @@ const Pagination = ({...props})=> {
         paginationDirection='flex-end'
     } = props;
     
-    console.log('Pagination---------->',props);
+    // console.log('Pagination---------->',props);
     const container = {
         height: paginationHeight,
         backgroundColor: paginationBackgroudColor,

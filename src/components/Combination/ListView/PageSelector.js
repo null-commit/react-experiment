@@ -29,18 +29,21 @@ const styles = StyleSheet.create({
 const PageSelector = ({...props})=> {
     const { style } = props;
 
+    const __onPress = e => {
+        console.log('button----------------->',e.target.innerText);
+    }
 
     return(
         <View style={style}>
-            <Button title='首页' style={styles.startBtn}/>
-            <Button title='上一页' style={styles.nextBtn}/>
+            <Button title='首页' style={styles.startBtn} onPress={__onPress}/>
+            <Button title='上一页' style={styles.nextBtn} onPress={__onPress}/>
             {
                 [1,2,3,4,5].map((item,index)=>
-                    <Button key={'pagination'+index} title={item} style={styles.numBtn}/>
+                    <Button key={'pagination'+index} title={item} style={styles.numBtn} onPress={__onPress}/>
                 )
             }
-            <Button title='下一页' style={styles.nextBtn}/>
-            <Button title='尾页' style={styles.lastBtn}/>
+            <Button title='下一页' style={styles.nextBtn} onPress={__onPress}/>
+            <Button title='尾页' style={styles.lastBtn} onPress={__onPress}/>
         </View>
     )
 }

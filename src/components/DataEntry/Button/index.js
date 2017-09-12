@@ -14,12 +14,8 @@ class Button extends Component {
             ...other,
         } = this.props;
         
-        const __onPress = ()=>{
-            onPress && onPress(this.props);
-        }
-        
         return(
-            <TouchableOpacity style={[styles.button,style]} onPress={ __onPress }>
+            <TouchableOpacity style={[styles.button,style]} onPress={ onPress }>
                 {title}
             </TouchableOpacity>
         )
